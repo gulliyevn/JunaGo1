@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './utils/themeContext';
 
-// Импорт компонентов
+// Import components
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import ImageSlider from './components/ImageSlider/ImageSlider';
@@ -12,7 +12,9 @@ import SalaryCalculator from './components/SalaryCalculator/SalaryCalculator';
 import Pricing from './components/Pricing/Pricing';
 import Testimonials from './components/Testimonials/Testimonials';
 import Footer from './components/Footer/Footer';
-// Импорт страницы курса
+
+// Import pages
+import Courses from './pages/Courses';
 import CourseDetail from './pages/CourseDetail';
 
 function App() {
@@ -33,7 +35,9 @@ function App() {
                                     <Testimonials />
                                 </>
                             } />
-                            <Route path="/education" element={<div>Courses Page</div>} />
+                            <Route path="/education" element={<Courses />} />
+                            <Route path="/courses" element={<Courses />} />
+                            <Route path="/courses/:courseId" element={<CourseDetail />} />
                             <Route path="/workspace" element={<div>Workspace Page</div>} />
                             <Route path="/articles" element={<div>Articles Page</div>} />
                             <Route path="/roadmap" element={<div>Roadmap Page</div>} />

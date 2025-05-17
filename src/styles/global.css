@@ -1,10 +1,36 @@
-/* global.css */
+/* src/styles/global.css */
 
-/* Импорт необходимых шрифтов */
+/* Import necessary fonts */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-/* Базовые стили */
+/* Import variables and component styles */
+@import 'variables.css';
+@import 'Header.css';
+@import 'Footer.css';
+@import 'Hero.css';
+@import 'Features.css';
+@import 'ImageSlider.css';
+@import 'SalaryCalculator.css';
+@import 'Pricing.css';
+@import 'Testimonials.css';
+@import 'Courses.css';
+@import 'CourseDetail.css';
+@import 'Courses.css';
+@import 'components/CourseCard.css';
+
+/* Component styles */
+@import 'components/Chatbot.css';
+@import 'components/CourseHeader.css';
+@import 'components/CourseProgressBar.css';
+@import 'components/CourseTabs.css';
+@import 'components/CourseContent.css';
+@import 'components/CodeEditor.css';
+@import 'components/CourseMaterials.css';
+@import 'components/CourseCard.css';
+@import 'components/FeaturedCourses.css';
+
+/* Basic styles */
 * {
   margin: 0;
   padding: 0;
@@ -47,7 +73,7 @@ img {
   display: block;
 }
 
-/* Контейнер */
+/* Container */
 .container {
   width: 92%;
   max-width: 1200px;
@@ -55,7 +81,47 @@ img {
   padding: 0 15px;
 }
 
-/* Утилиты для отступов */
+/* App layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Baloo 2', sans-serif;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-in;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Transitions */
+a, button, input, select {
+  transition: all 0.3s ease;
+}
+
+/* Common utility classes */
 .mt-1 { margin-top: 0.25rem; }
 .mt-2 { margin-top: 0.5rem; }
 .mt-3 { margin-top: 0.75rem; }
@@ -87,86 +153,6 @@ img {
 .p-6 { padding: 1.5rem; }
 .p-8 { padding: 2rem; }
 
-/* Адаптивные стили */
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-/* Анимации и переходы */
-.fade-in {
-  animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.scale-in {
-  animation: scaleIn 0.3s ease-in;
-}
-
-@keyframes scaleIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* Плавные переходы для всех интерактивных элементов */
-a, button, input, select {
-  transition: all 0.3s ease;
-}
-
-
-/* src/styles/global.css */
-@import 'variables.css';
-@import 'Header.css';
-@import 'Footer.css';
-@import 'components/Chatbot.css';
-@import 'components/CourseHeader.css';
-@import 'components/CourseProgressBar.css';
-@import 'components/CourseTabs.css';
-@import 'components/CourseContent.css';
-@import 'components/CodeEditor.css';
-@import 'components/CourseMaterials.css';
-@import 'CourseDetail.css';
-
-/* Add global styles */
-html, body {
-  scroll-behavior: smooth;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Baloo 2', sans-serif;
-}
-
-/* Focus styles for accessibility */
-
-
-/* Hover effects for interactive elements */
-a, button {
-  transition: color 0.2s, background-color 0.2s, transform 0.2s, opacity 0.2s;
-}
-
-a:hover, button:hover {
-  opacity: 0.9;
-}
-
-/* Container */
-.container {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* Common utility classes */
 .gradient-bg {
   background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
   color: white;
@@ -175,7 +161,10 @@ a:hover, button:hover {
 /* Dark theme adjustments */
 .dark-mode .course-content,
 .dark-mode .code-editor-container,
-.dark-mode .materials-container {
+.dark-mode .materials-container,
+.dark-mode .course-card,
+.dark-mode .courses-filters,
+.dark-mode .no-courses {
   background-color: #2d3748;
   border-color: #4a5568;
 }
@@ -186,9 +175,12 @@ a:hover, button:hover {
   border-color: #4a5568;
 }
 
-.dark-mode .chat-input-area textarea {
-  background-color: #4a5568;
+.dark-mode .chat-input-area textarea,
+.dark-mode .search-input,
+.dark-mode .filter-select {
+  background-color: #1a202c;
   color: white;
+  border-color: #4a5568;
 }
 
 .dark-mode .chatbox {
@@ -206,4 +198,12 @@ a:hover, button:hover {
 
 .dark-mode .console-output {
   background-color: #1a202c;
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+a:hover, button:hover {
+  opacity: 0.9;
 }

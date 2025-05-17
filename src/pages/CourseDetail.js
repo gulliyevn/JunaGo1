@@ -1,7 +1,8 @@
 // src/pages/CourseDetail.js
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import coursesData from '../utils/coursesData';
 import CodeEditor from '../components/Courses/CodeEditor';
 import CourseMaterials from '../components/Courses/CourseMaterials';
 import CourseContent from '../components/Courses/CourseContent';
@@ -10,45 +11,53 @@ import CourseProgressBar from '../components/Courses/CourseProgressBar';
 import CourseTabs from '../components/Courses/CourseTabs';
 import '../styles/CourseDetail.css';
 
-// Ленивая загрузка Chatbot после всех других импортов
+// Lazy loading Chatbot
 const Chatbot = lazy(() => import('../components/common/Chatbot'));
 
 const CourseDetail = () => {
     const { courseId } = useParams();
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('theory');
-    const [courseProgress, setCourseProgress] = useState(25);
+    const [courseProgress, setCourseProgress] = useState(0);
     const [isFavorite, setIsFavorite] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);
+    const [course, setCourse] = useState(null);
 
-    // Остальной код без изменений
-    const courseData = {
-        id: courseId || 'current-course',
-        title: 'JavaScript Basics',
-        duration: '12 hours',
-        level: 'Intermediate',
-        progress: courseProgress,
-    };
-
+    // Fetch course data
     useEffect(() => {
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        const progress = JSON.parse(localStorage.getItem('progress')) || {};
+        const foundCourse = coursesData.find(c => c.id === parseInt(courseId));
 
-        setIsFavorite(favorites.includes(courseData.id));
-        setIsCompleted(progress[courseData.id] === 'completed');
+        if (foundCourse) {
+            setCourse(foundCourse);
+            setCourseProgress(foundCourse.progress || 0);
 
-        if (progress[courseData.id] === 'completed') {
-            setCourseProgress(100);
+            // Check if course is in favorites
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            setIsFavorite(favorites.includes(foundCourse.id));
+
+            // Check if course is completed
+            const progress = JSON.parse(localStorage.getItem('progress')) || {};
+            setIsCompleted(progress[foundCourse.id] === 'completed');
+
+            if (progress[foundCourse.id] === 'completed') {
+                setCourseProgress(100);
+            }
+        } else {
+            // Redirect to courses page if course not found
+            navigate('/courses');
         }
-    }, [courseData.id]);
+    }, [courseId, navigate]);
 
     const toggleFavorite = () => {
+        if (!course) return;
+
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         let newFavorites;
 
         if (isFavorite) {
-            newFavorites = favorites.filter(id => id !== courseData.id);
+            newFavorites = favorites.filter(id => id !== course.id);
         } else {
-            newFavorites = [...favorites, courseData.id];
+            newFavorites = [...favorites, course.id];
         }
 
         localStorage.setItem('favorites', JSON.stringify(newFavorites));
@@ -56,18 +65,29 @@ const CourseDetail = () => {
     };
 
     const markAsCompleted = () => {
+        if (!course) return;
+
         const progress = JSON.parse(localStorage.getItem('progress')) || {};
-        progress[courseData.id] = 'completed';
+        progress[course.id] = 'completed';
         localStorage.setItem('progress', JSON.stringify(progress));
 
         setIsCompleted(true);
         setCourseProgress(100);
     };
 
+    if (!course) {
+        return (
+            <div className="course-loading">
+                <div className="loading-spinner"></div>
+                <p>Loading course...</p>
+            </div>
+        );
+    }
+
     return (
         <>
             <Helmet>
-                <title>{courseData.title} | JunaGO</title>
+                <title>{course.title} | JunaGO</title>
             </Helmet>
 
             <main className="course-detail-container">
@@ -75,14 +95,14 @@ const CourseDetail = () => {
                 <div className="breadcrumbs">
                     <Link to="/" className="breadcrumb-link">Home</Link> /
                     <Link to="/courses" className="breadcrumb-link">Courses</Link> /
-                    <span className="breadcrumb-current">{courseData.title}</span>
+                    <span className="breadcrumb-current">{course.title}</span>
                 </div>
 
                 {/* Course Header */}
                 <CourseHeader
-                    title={courseData.title}
-                    duration={courseData.duration}
-                    level={courseData.level}
+                    title={course.title}
+                    duration={course.duration}
+                    level={course.level}
                     isFavorite={isFavorite}
                     isCompleted={isCompleted}
                     onToggleFavorite={toggleFavorite}
@@ -114,7 +134,7 @@ const CourseDetail = () => {
                 </div>
             </main>
 
-            {/* Chatbot с использованием Suspense */}
+            {/* Chatbot */}
             <Suspense fallback={<div>Loading Chatbot...</div>}>
                 <Chatbot />
             </Suspense>

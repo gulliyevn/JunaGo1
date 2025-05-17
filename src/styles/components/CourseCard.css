@@ -1,0 +1,124 @@
+/* src/styles/components/CourseCard.css */
+.course-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    background-color: var(--card-background);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px var(--shadow-color);
+}
+
+.course-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover .course-image img {
+    transform: scale(1.05);
+}
+
+.course-price {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-weight: 700;
+}
+
+.course-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.course-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.course-category,
+.course-level {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+.course-category {
+    background-color: #c5e1d1;
+    color: var(--text-color);
+}
+
+.course-level {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.course-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.course-description {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.course-instructor,
+.course-duration {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.course-button {
+    display: block;
+    text-align: center;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.course-button:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}

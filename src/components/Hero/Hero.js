@@ -1,4 +1,6 @@
+// src/components/Hero/Hero.js (Updated)
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTheme } from '../../utils/themeContext';
 import '../../styles/Hero.css';
 import logoMainDark from '../../assets/logomaindark.png';
@@ -19,12 +21,14 @@ const Hero = () => {
                         <p className="hero-subtitle">
                             Your new assistant Juna AI
                         </p>
-                        <button
-                            onClick={() => window.location.href = '/pricing'}
-                            className="hero-button"
-                        >
-                            Subscribe now
-                        </button>
+                        <div className="hero-buttons">
+                            <Link to="/pricing" className="hero-button">
+                                Subscribe now
+                            </Link>
+                            <Link to="/courses" className="hero-button hero-button-secondary">
+                                Explore Courses
+                            </Link>
+                        </div>
                     </div>
                     <div className="hero-image">
                         <img src={logoImage} alt="JunaGO Logo" />

@@ -18,6 +18,8 @@
     --icon-color: inherit;
     --toggle-bg: #98B5A4;
     --toggle-circle: #ffffff;
+    --accent-light: #c5e1d1;
+    --text-muted: #666666;
 }
 
 [data-theme="dark"] {
