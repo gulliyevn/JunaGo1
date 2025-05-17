@@ -1,0 +1,92 @@
+/* Стили для компонента SalaryCalculator */
+
+.calculator-section {
+    max-width: 1152px;
+    margin: 2.5rem auto;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    background-color: var(--card-background);
+}
+
+@media (min-width: 768px) {
+    .calculator-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.calculator-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.form-select {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.calculator-button {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.calculator-button:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+.calculator-result {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--accent-color);
+    background-color: var(--card-background);
+}
+
+.result-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.result-value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+}

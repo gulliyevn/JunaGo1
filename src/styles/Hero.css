@@ -1,0 +1,113 @@
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    background: linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to));
+}
+
+.hero-container {
+    margin: auto 0;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.hero-text {
+    text-align: center;
+    width: 50%;
+}
+
+.hero-title {
+    font-size: 3.75rem;
+    color: var(--text-color);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.hero-accent {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin: 0.5rem 0 3rem;
+}
+
+.hero-button {
+    display: inline-block;
+    border-radius: 9999px;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: var(--button-text-color);
+    background-color: var(--primary-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+    color: var(--button-hover-text);
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+
+.hero-image {
+    width: 50%;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-br {
+    display: none;
+}
+
+/* Адаптивность */
+@media (min-width: 640px) {
+    .hero-br {
+        display: inline;
+    }
+}
+
+@media (max-width: 1023px) {
+    .hero-image {
+        display: none;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-button {
+        width: 180px;
+    }
+
+    .hero-section {
+        height: 300px;
+    }
+}

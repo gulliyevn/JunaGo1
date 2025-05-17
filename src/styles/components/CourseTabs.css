@@ -1,0 +1,50 @@
+/* src/styles/components/CourseTabs.css */
+.course-tabs-container {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.course-tabs {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 1px;
+}
+
+.course-tab {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.course-tab:hover {
+    color: var(--text-color);
+}
+
+.course-tab.active {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.course-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 3px 3px 0 0;
+}
+
+@media (max-width: 640px) {
+    .course-tab {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+    }
+}

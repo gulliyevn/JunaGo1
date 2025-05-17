@@ -1,0 +1,242 @@
+/* src/styles/Footer.css */
+.footer {
+    background-color: var(--footer-background);
+    color: var(--text-color);
+    padding-top: 2.5rem;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1440px; /* Make this wider to extend the content area */
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center; /* Center the content */
+    /* Or use justify-content: flex-start; if you want left-aligned text */
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.footer-logo {
+    width: 100%;
+    max-width: 16rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.footer-logo-img {
+    width: 150px;
+    margin-right: 0.5rem;
+}
+
+.footer-slogan {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.footer-description {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    flex-grow: 1;
+}
+
+.footer-links-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav a,
+.footer-text-button {
+    color: var(--text-color);
+    opacity: 0.8;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+
+.footer-nav a:hover,
+.footer-text-button:hover {
+    opacity: 1;
+}
+
+.footer-subscribe-text {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.footer-social-link {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    filter: saturate(0);
+}
+
+.footer-social-link:hover {
+    opacity: 1;
+    filter: saturate(100%);
+}
+
+.footer-social-link .fa-facebook {
+    color: #1877F2;
+}
+
+.footer-social-link .fa-x-twitter {
+    color: #1DA1F2;
+}
+
+.footer-social-link .fa-telegram {
+    color: #0088cc;
+}
+
+.footer-social-link .fa-instagram {
+    color: #E1306C;
+}
+
+.footer-bottom {
+
+    padding: 1rem 1.25rem;
+    background: linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to));
+}
+/* Important changes for full-width footer bottom */
+.footer-bottom {
+    width: 100%;
+    padding: 1rem 0;
+    background: linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to));
+    left: 0;
+    right: 0;
+}
+
+.footer-bottom-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-copyright {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Popup Styles */
+.footer-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+.footer-popup {
+    background-color: var(--card-background);
+    max-width: 32rem;
+    width: 75%;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px var(--shadow-color);
+    padding: 1.5rem;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.footer-popup-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.footer-popup-close:hover {
+    background-color: var(--primary-color);
+}
+
+.footer-popup-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.footer-popup-content {
+    color: var(--text-color);
+    white-space: pre-line;
+}
+
+@media (min-width: 768px) {
+    .footer-main {
+        flex-direction: row;
+        gap: 5rem;
+    }
+
+    .footer-links {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .footer-links-column {
+        flex: 1;
+    }
+
+    .footer-copyright {
+        text-align: left;
+    }
+}

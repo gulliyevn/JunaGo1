@@ -1,0 +1,97 @@
+/* src/styles/components/CourseHeader.css */
+.course-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .course-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+    }
+}
+
+.course-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.course-meta {
+    display: flex;
+    gap: 1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 0.875rem;
+}
+
+.course-duration,
+.course-level {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.course-header-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .course-header-actions {
+        margin-top: 0;
+    }
+}
+
+.favorite-button,
+.complete-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.favorite-button {
+    background-color: var(--accent-light);
+    color: var(--text-color);
+}
+
+.favorite-button:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.favorite-button.favorited {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.complete-button {
+    background-color: #FFD700;
+    color: var(--text-color);
+}
+
+.complete-button:hover {
+    background-color: #B8860B;
+    color: white;
+}
+
+.complete-button.completed {
+    background-color: #4CAF50;
+    color: white;
+    cursor: default;
+}
+
+.complete-button:disabled {
+    opacity: 0.7;
+    cursor: default;
+}

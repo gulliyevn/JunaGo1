@@ -1,0 +1,65 @@
+/* src/styles/components/LanguageSelector.css */
+
+.language-selector {
+    position: relative;
+    display: inline-block;
+    margin: 0 30px;
+}
+
+.language-selector .language-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.language-selector .language-button:hover {
+    background-color: rgba(25, 34, 50, 0);
+}
+
+.language-selector .flag-emoji {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.language-selector .dropdown-content {
+    position: absolute;
+    width: 130px;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background-color: #1e293b;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px #192232;
+    padding: 8px;
+    z-index: 50;
+}
+
+.language-selector .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    color: white;
+    transition: background-color 0.2s ease;
+}
+
+.language-selector .lang-option:hover,
+.language-selector .lang-option.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.language-selector .lang-option span {
+    font-size: 1rem;
+}

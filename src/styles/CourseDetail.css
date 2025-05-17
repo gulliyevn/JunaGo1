@@ -1,0 +1,45 @@
+/* src/styles/CourseDetail.css */
+.course-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.breadcrumbs {
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.breadcrumb-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb-link:hover {
+    color: var(--secondary-color);
+}
+
+.breadcrumb-current {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.course-content-area {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .course-content-area {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.course-main-content,
+.course-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}

@@ -1,0 +1,38 @@
+src/
+  ├── components/
+  │   ├── Courses/
+  │   │   ├── CourseHeader.js
+  │   │   ├── CourseProgressBar.js
+  │   │   ├── CourseTabs.js
+  │   │   ├── CourseContent.js
+  │   │   ├── CodeEditor.js
+  │   │   └── CourseMaterials.js
+  │   └── common/
+  │       └── Chatbot.js
+  ├── pages/
+  │   └── CourseDetail.js
+  └── styles/
+      ├── variables.css
+      ├── global.css
+      ├── CourseDetail.css
+      └── components/
+          ├── CourseHeader.css
+          ├── CourseProgressBar.css
+          ├── CourseTabs.css
+          ├── CourseContent.css
+          ├── CodeEditor.css
+          ├── CourseMaterials.css
+          └── Chatbot.css
+
+           //пушить на гитхаб
+          cd /JunaGo1
+          git add .
+          git commit -m "my commit"
+          git push
+
+
+          //откат к предыдущей версии
+          git reset --hard //уточни у клода
+
+          //подтянуть изменинения с гитхаба
+           git pull
