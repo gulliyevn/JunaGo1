@@ -122,3 +122,27 @@
     color: var(--text-color);
     opacity: 0.8;
 }
+
+/* Темная тема для страницы курсов */
+[data-theme="dark"] .courses-page {
+    background-color: var(--background-color);
+}
+
+[data-theme="dark"] .courses-title,
+[data-theme="dark"] .courses-subtitle,
+[data-theme="dark"] .filter-group label {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .courses-filters,
+[data-theme="dark"] .no-courses {
+    background-color: var(--card-background);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .search-input,
+[data-theme="dark"] .filter-select {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}

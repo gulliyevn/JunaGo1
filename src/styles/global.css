@@ -207,3 +207,16 @@ html, body {
 a:hover, button:hover {
   opacity: 0.9;
 }
+
+.dark-mode {
+  background-color: #1a202c;
+  color: #f0f0f0;
+}
+
+.dark-mode main {
+  background-color: #1a202c;
+}
+
+.dark-mode .app {
+  background-color: #1a202c;
+}

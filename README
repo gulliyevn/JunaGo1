@@ -25,7 +25,7 @@ src/
           └── Chatbot.css
 
            //пушить на гитхаб
-          cd /JunaGo1
+          cd /JunaGo
           git add .
           git commit -m "my commit"
           git push

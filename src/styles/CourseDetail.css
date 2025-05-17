@@ -73,3 +73,39 @@
     color: var(--text-color);
     font-size: 1rem;
 }
+
+/* Добавьте в src/styles/CourseDetail.css */
+
+[data-theme="dark"] .course-detail-container {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .course-content {
+    background-color: #2d3748;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .course-main-content,
+[data-theme="dark"] .course-sidebar {
+    background-color: #2d3748;
+}
+
+/* Стили для блока кода в редакторе */
+[data-theme="dark"] .code-editor-wrapper {
+    background-color: #1a202c;
+    border-color: #4a5568;
+}
+
+/* Вкладки курса */
+[data-theme="dark"] .course-tab {
+    color: #a0aec0;
+}
+
+[data-theme="dark"] .course-tab:hover {
+    color: #f0f0f0;
+}
+
+[data-theme="dark"] .course-tab.active {
+    color: var(--accent-color);
+}
