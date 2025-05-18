@@ -1,7 +1,10 @@
+/* src/styles/Header.css */
 .header {
     width: 100%;
     background-color: var(--header-background);
     box-shadow: 0 2px 4px var(--shadow-color);
+    position: relative;
+    z-index: 1000;
 }
 
 .nav {
@@ -65,7 +68,7 @@
     gap: 1rem;
 }
 
-/* Переключатель темы */
+/* Theme Toggle */
 .toggle-container {
     position: relative;
     display: inline-block;
@@ -101,66 +104,76 @@
     cursor: pointer;
 }
 
+/* Hamburger Menu Button */
 .menu-button {
     display: none;
     background: none;
     border: none;
-    color: var(--text-color);
-    font-size: 1.5rem;
     cursor: pointer;
+    padding: 5px;
+    z-index: 1002;
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    .nav-links {
-        position: absolute;
-        background-color: var(--header-background);
-        min-height: 60vh;
-        left: 0;
-        top: -100%;
-        width: 100%;
-        padding: 0 5px;
-        z-index: 100;
-        transition: top 0.3s ease;
-    }
-
-    .nav-links.open {
-        top: 58px;
-    }
-
-    .nav-links ul {
-        flex-direction: column;
-        gap: 2rem;
-        padding: 2rem 0;
-    }
-
-    .menu-button {
-        display: block;
-    }
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 20px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
 }
 
-/* In src/styles/Header.css */
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--text-color);
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
 }
 
-.logo-icon, .logo-container svg {
-    width: 24px;
-    height: 24px;
-    color: #3b82f6; /* Blue color for the icon, adjust as needed */
+.hamburger span:nth-child(1) {
+    top: 0px;
 }
 
-.logo-text {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: white;
+.hamburger span:nth-child(2) {
+    top: 8px;
 }
 
-/* Add to src/styles/Header.css */
+.hamburger span:nth-child(3) {
+    top: 16px;
+}
 
+.hamburger.open span:nth-child(1) {
+    top: 8px;
+    transform: rotate(135deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+}
+
+.hamburger.open span:nth-child(3) {
+    top: 8px;
+    transform: rotate(-135deg);
+}
+
+/* Mobile User Section */
+.mobile-user-section {
+    display: none;
+}
+
+/* Menu Overlay */
+.menu-overlay {
+    display: none;
+}
+
+/* Desktop Login Styles */
 .login-container {
     margin-right: 15px;
 }
@@ -186,11 +199,6 @@
     color: #D6E0E2;
 }
 
-.login-button span {
-    margin-left: 6px;
-}
-
-/* Styles for the logged-in user */
 .user-controls {
     display: flex;
     align-items: center;
@@ -205,14 +213,11 @@
     border: 2px solid #3b82f6;
 }
 
-.login-button {
-    background-color: #162A2C;
-    color: white;
-    width: 100px;
-    padding: 0.5rem 1.25rem; /* py-2 px-5 */
-    border-radius: 9999px; /* rounded-full */
-    border-bottom: 4px solid rgba(207, 178, 178, 0.2); /* border-b-4 */
-    transition: all 100ms ease; /* transition-all duration-100 */
+.logout-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
 }
 
 .logout-button img {
@@ -226,18 +231,211 @@
     opacity: 1;
 }
 
-.login-button:hover {
-    background-color: #9ca3af; /* hover:bg-gray-400 */
-    color: #D6E0E2; /* hover:text-[#D6E0E2] */
-}
-
-.dark-mode .login-button {
-    color: white; /* dark-mode:text-white */
-}
-
-/* Media query for responsive width */
-@media (min-width: 768px) {
-    .login-button {
-        width: 100px; /* md:w-[100px] */
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .nav {
+        padding: 0 1rem;
+        max-width: 100%;
+        width: 100%;
     }
+
+    .menu-button {
+        display: block;
+    }
+
+    .header-controls .login-container,
+    .header-controls .toggle-container,
+    .header-controls .language-selector {
+        display: none;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 58px;
+        right: -100%;
+        width: 300px;
+        height: calc(100vh - 58px);
+        background-color: var(--header-background);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 2rem 1rem;
+        box-shadow: -2px 0 10px var(--shadow-color);
+        transition: right 0.3s ease;
+        z-index: 1001;
+        overflow-y: auto;
+    }
+
+    .nav-links.open {
+        right: 0;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 1.125rem;
+    }
+
+    .mobile-user-section {
+        display: block;
+        width: 100%;
+        border-top: 1px solid var(--border-color);
+        padding-top: 1rem;
+    }
+
+    .mobile-login-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .mobile-login-button {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 0;
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 1.125rem;
+    }
+
+    .mobile-user-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .mobile-user-controls a,
+    .mobile-logout-button {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 0;
+        color: var(--text-color);
+        text-decoration: none;
+        background: none;
+        border: none;
+        font-size: 1.125rem;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
+
+    .mobile-avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .mobile-theme-toggle {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .mobile-theme-toggle label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        padding: 1rem 0;
+        font-size: 1.125rem;
+        color: var(--text-color);
+    }
+
+    .mobile-toggle-checkbox {
+        display: none;
+    }
+
+    .mobile-toggle-slider {
+        position: relative;
+        width: 50px;
+        height: 24px;
+        background-color: var(--border-color);
+        border-radius: 12px;
+        transition: background-color 0.3s;
+    }
+
+    .mobile-toggle-slider::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.3s;
+    }
+
+    .mobile-toggle-checkbox:checked + .mobile-toggle-slider {
+        background-color: var(--primary-color);
+    }
+
+    .mobile-toggle-checkbox:checked + .mobile-toggle-slider::before {
+        transform: translateX(26px);
+    }
+
+    .mobile-language-selector {
+        display: flex;
+        justify-content: center;
+        padding-top: 1rem;
+    }
+
+    .menu-overlay {
+        display: block;
+        position: fixed;
+        top: 58px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 58px);
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .nav-links {
+        width: 100%;
+        right: -100%;
+    }
+
+    .nav-links.open {
+        right: 0;
+    }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .nav-links {
+    background-color: var(--header-background);
+}
+
+[data-theme="dark"] .nav-link {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .mobile-login-button,
+[data-theme="dark"] .mobile-user-controls a,
+[data-theme="dark"] .mobile-logout-button {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .hamburger span {
+    background: var(--text-color);
+}
+
+[data-theme="dark"] .mobile-toggle-slider::before {
+    background-color: var(--text-color);
 }

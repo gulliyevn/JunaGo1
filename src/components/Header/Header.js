@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../utils/themeContext';
-import LanguageSelector from '../common/LanguageSelector'; // Correct import path
+import LanguageSelector from '../common/LanguageSelector';
 import '../../styles/Header.css';
 
 // Import both logo versions
@@ -24,42 +24,101 @@ const Header = () => {
         setMenuOpen(!menuOpen);
     };
 
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
+
     const handleLogout = () => {
         localStorage.removeItem("authToken");
         localStorage.removeItem("user");
         setIsLoggedIn(false);
         setUserData(null);
+        closeMenu();
+    };
+
+    const handleNavClick = () => {
+        closeMenu();
     };
 
     return (
         <header className="header">
             <nav className="nav">
-                <Link to="/" className="logo">
+                <Link to="/" className="logo" onClick={handleNavClick}>
                     <div className="logo-container">
                         <img src={logoImage} alt="JunaGO Logo" />
                     </div>
                 </Link>
 
+                {/* Desktop Navigation */}
                 <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
                     <ul>
                         <li className="nav-item">
-                            <Link to="/education" className="nav-link">Courses</Link>
+                            <Link to="/education" className="nav-link" onClick={handleNavClick}>Courses</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/workspace" className="nav-link">Workspace</Link>
+                            <Link to="/workspace" className="nav-link" onClick={handleNavClick}>Workspace</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/articles" className="nav-link">Articles</Link>
+                            <Link to="/articles" className="nav-link" onClick={handleNavClick}>Articles</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/roadmap" className="nav-link">Roadmap</Link>
+                            <Link to="/roadmap" className="nav-link" onClick={handleNavClick}>Roadmap</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/community" className="nav-link">Project</Link>
+                            <Link to="/community" className="nav-link" onClick={handleNavClick}>Project</Link>
                         </li>
                     </ul>
+
+                    {/* Mobile User Controls */}
+                    <div className="mobile-user-section">
+                        <div className="mobile-login-container">
+                            {isLoggedIn ? (
+                                <div className="mobile-user-controls">
+                                    <Link to="/dashboard" onClick={handleNavClick}>
+                                        <img
+                                            src={userData?.avatar || "/assets/avatar.png"}
+                                            alt="User Avatar"
+                                            className="mobile-avatar"
+                                        />
+                                        <span>Profile</span>
+                                    </Link>
+                                    <button onClick={handleLogout} className="mobile-logout-button">
+                                        <i className="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            ) : (
+                                <Link to="/login" className="mobile-login-button" onClick={handleNavClick}>
+                                    <i className="fas fa-user"></i>
+                                    <span>Login</span>
+                                </Link>
+                            )}
+                        </div>
+
+                        {/* Mobile Theme Toggle */}
+                        <div className="mobile-theme-toggle">
+                            <label htmlFor="mobile-darkMode">
+                                <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
+                                <input
+                                    type="checkbox"
+                                    name="mobile-darkMode"
+                                    id="mobile-darkMode"
+                                    className="mobile-toggle-checkbox"
+                                    checked={darkMode}
+                                    onChange={toggleTheme}
+                                />
+                                <span className="mobile-toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        {/* Mobile Language Selector */}
+                        <div className="mobile-language-selector">
+                            <LanguageSelector />
+                        </div>
+                    </div>
                 </div>
 
+                {/* Desktop Controls */}
                 <div className="header-controls">
                     <div className="login-container">
                         {isLoggedIn ? (
@@ -97,9 +156,16 @@ const Header = () => {
                     </div>
 
                     <button className="menu-button" onClick={toggleMenu}>
-                        {menuOpen ? '✕' : '☰'}
+                        <span className={`hamburger ${menuOpen ? 'open' : ''}`}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
                     </button>
                 </div>
+
+                {/* Mobile Menu Overlay */}
+                {menuOpen && <div className="menu-overlay" onClick={closeMenu}></div>}
             </nav>
         </header>
     );

@@ -1,4 +1,4 @@
-// src/components/Footer.css
+// src/components/Footer/Footer.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../utils/themeContext';
@@ -9,12 +9,12 @@ import logoDark from '../../assets/logowhite1.png'; // Light logo for dark mode
 import logoWhite from '../../assets/logonew.png'; // Dark logo for light mode
 
 const Footer = () => {
-    const { darkMode } = useTheme(); // Получаем текущую тему
+    const { darkMode } = useTheme(); // Get current theme
     const [showPopup, setShowPopup] = useState(false);
     const [popupTitle, setPopupTitle] = useState('');
     const [popupContent, setPopupContent] = useState('');
 
-    // Выбираем логотип в зависимости от темы
+    // Choose logo based on theme
     const logoImage = darkMode ? logoWhite : logoDark;
 
     const openPopup = (type) => {
@@ -122,19 +122,16 @@ const Footer = () => {
                             <h2 className="footer-links-title">Subscribe!</h2>
                             <p className="footer-subscribe-text">
                                 Start your coding journey with JunaGo, learn new skills and
-                                <br />be informed about all events!
+                                be informed about all events!
                             </p>
                             <div className="footer-social">
-                                <a href="https://www.facebook.com/" className="footer-social-link">
+                                <a href="https://www.facebook.com/" className="footer-social-link" target="_blank" rel="noopener noreferrer">
                                     <i className="fab fa-facebook"></i>
                                 </a>
-                                <a href="https://x.com/" className="footer-social-link">
+                                <a href="https://x.com/" className="footer-social-link" target="_blank" rel="noopener noreferrer">
                                     <i className="fab fa-x-twitter"></i>
                                 </a>
-                                <a href="https://web.telegram.org/" className="footer-social-link">
-                                    <i className="fab fa-telegram"></i>
-                                </a>
-                                <a href="https://www.instagram.com/" className="footer-social-link">
+                                <a href="https://www.instagram.com/" className="footer-social-link" target="_blank" rel="noopener noreferrer">
                                     <i className="fab fa-instagram"></i>
                                 </a>
                             </div>
@@ -152,8 +149,8 @@ const Footer = () => {
 
             {/* Popup Modal */}
             {showPopup && (
-                <div className="footer-popup-overlay">
-                    <div className="footer-popup">
+                <div className="footer-popup-overlay" onClick={closePopup}>
+                    <div className="footer-popup" onClick={(e) => e.stopPropagation()}>
                         <button className="footer-popup-close" onClick={closePopup}>Close</button>
                         <h2 className="footer-popup-title">{popupTitle}</h2>
                         <div className="footer-popup-content">{popupContent}</div>
