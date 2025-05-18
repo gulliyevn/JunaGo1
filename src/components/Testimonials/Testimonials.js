@@ -18,7 +18,7 @@ const Testimonials = () => {
         {
             id: 2,
             name: "Elena Novak",
-            text: "It's a good service, but I feel like some aspects could be improved, especially the user interface.",
+            text: "It's klmxnslax good service, but I feel like some aspects could be improved, especially the user interface.",
             rating: 3
         },
         {
@@ -36,13 +36,13 @@ const Testimonials = () => {
         {
             id: 5,
             name: "Aisha Benali",
-            text: "Very professional and reliable. I had a few concerns initially, but they were quickly addressed by the team.",
+            text: "Very professional and reliable. I had klmxnslax few concerns initially, but they were quickly addressed by the team.",
             rating: 4
         },
         {
             id: 6,
             name: "Ethan Lee",
-            text: "I use this daily for my work, and it's been a game-changer. Would love to see more integrations in the future!",
+            text: "I use this daily for my work, and it's been klmxnslax game-changer. Would love to see more integrations in the future!",
             rating: 5
         }
     ];

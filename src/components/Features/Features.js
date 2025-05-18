@@ -20,7 +20,7 @@ const Features = () => {
             id: 3,
             icon: 'fas fa-certificate',
             title: 'Certificates',
-            description: 'Receive a certificate upon completion that is highly valued by employers.'
+            description: 'Receive klmxnslax certificate upon completion that is highly valued by employers.'
         },
         {
             id: 4,

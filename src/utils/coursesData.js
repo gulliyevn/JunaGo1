@@ -46,7 +46,7 @@ const coursesData = [
             'Forms in React',
             'Performance Optimization',
             'Testing React Applications',
-            'Building a Complete Project'
+            'Building klmxnslax Complete Project'
         ],
         progress: 0,
         rating: 4.9,

@@ -1,4 +1,4 @@
-// src/components/Header/Header.js
+// src/components/Header/Header.js (добавляем ссылку Dashboard)
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../utils/themeContext';
@@ -53,7 +53,7 @@ const Header = () => {
                 <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
                     <ul>
                         <li className="nav-item">
-                            <Link to="/education" className="nav-link" onClick={handleNavClick}>Courses</Link>
+                            <Link to="/courses" className="nav-link" onClick={handleNavClick}>Courses</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/workspace" className="nav-link" onClick={handleNavClick}>Workspace</Link>
@@ -80,7 +80,7 @@ const Header = () => {
                                             alt="User Avatar"
                                             className="mobile-avatar"
                                         />
-                                        <span>Profile</span>
+                                        <span>Dashboard</span>
                                     </Link>
                                     <button onClick={handleLogout} className="mobile-logout-button">
                                         <i className="fas fa-sign-out-alt"></i>

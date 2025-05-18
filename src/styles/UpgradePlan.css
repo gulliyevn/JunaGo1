@@ -1,0 +1,319 @@
+/* src/styles/UpgradePlan.css */
+.upgrade-page {
+    min-height: 100vh;
+    background-color: var(--background-color);
+    padding: 2rem 0;
+}
+
+.upgrade-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+.upgrade-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.upgrade-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.upgrade-header p {
+    font-size: 1.125rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.current-plan-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+/* Auth Required */
+.auth-required {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: var(--card-background);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.auth-required h2 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.auth-required p {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.login-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Plans Grid */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Plan Card */
+.plan-card {
+    background-color: var(--card-background);
+    border: 2px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.plan-card.popular {
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 20px rgba(var(--accent-color-rgb, 152, 181, 164), 0.2);
+}
+
+.plan-card.current {
+    border-color: #4CAF50;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.02) 100%);
+}
+
+/* Popular Badge */
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Plan Header */
+.plan-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.plan-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.plan-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.price-free {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.price-currency {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.price-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.price-period {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Plan Features */
+.plan-features {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.plan-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+.plan-features li i {
+    color: var(--accent-color);
+    width: 1rem;
+    text-align: center;
+}
+
+/* Plan Action */
+.plan-action {
+    margin-top: auto;
+}
+
+.plan-button {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.plan-button:not(.current) {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.plan-button:not(.current):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--accent-color-rgb, 152, 181, 164), 0.3);
+}
+
+.plan-button.current {
+    background-color: #4CAF50;
+    color: white;
+    cursor: default;
+}
+
+.plan-card.popular .plan-button:not(.current) {
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+}
+
+/* Footer */
+.upgrade-footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.money-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+.money-back i {
+    color: var(--accent-color);
+}
+
+.support-info p {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 0.875rem;
+}
+
+.support-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.support-info a:hover {
+    color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .upgrade-header h1 {
+        font-size: 2rem;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .plan-card {
+        padding: 1rem;
+    }
+
+    .popular-badge {
+        position: static;
+        transform: none;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 480px) {
+    .upgrade-container {
+        padding: 0 0.5rem;
+    }
+
+    .upgrade-header {
+        margin-bottom: 2rem;
+    }
+
+    .price-amount {
+        font-size: 2rem;
+    }
+}
+
+/* Dark Theme */
+[data-theme="dark"] .plan-card.current {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+}
+
+[data-theme="dark"] .plan-card.popular {
+    box-shadow: 0 4px 20px rgba(216, 224, 226, 0.2);
+}

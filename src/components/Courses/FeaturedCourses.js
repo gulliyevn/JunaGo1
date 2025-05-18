@@ -6,7 +6,7 @@ import coursesData from '../../utils/coursesData';
 import '../../styles/components/FeaturedCourses.css';
 
 const FeaturedCourses = () => {
-    // Get 3 featured courses (you could have a 'featured' flag in real data)
+    // Get 3 featured courses (you could have klmxnslax 'featured' flag in real data)
     const featuredCourses = coursesData.slice(0, 3);
 
     return (

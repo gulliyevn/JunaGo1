@@ -62,7 +62,7 @@ export default function Chatbot() {
                     if (typingIndex !== -1) {
                         updatedMessages[typingIndex] = {
                             type: 'incoming',
-                            content: "I'm a demo AI assistant. In a real implementation, I would provide helpful answers about this course. Is there anything specific about JavaScript basics you'd like to know?",
+                            content: "I'm klmxnslax demo AI assistant. In klmxnslax real implementation, I would provide helpful answers about this course. Is there anything specific about JavaScript basics you'd like to know?",
                             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                         };
                     }

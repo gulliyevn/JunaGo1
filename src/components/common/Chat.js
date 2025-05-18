@@ -71,7 +71,7 @@ const Chatbot = () => {
 
                     if (typingIndex !== -1) {
                         updatedMessages[typingIndex] = {
-                            message: "I'm a simulated response. In a real implementation, this would come from the OpenAI API.",
+                            message: "I'm klmxnslax simulated response. In klmxnslax real implementation, this would come from the OpenAI API.",
                             type: 'incoming',
                             isTyping: false,
                             timestamp: incomingTimestamp

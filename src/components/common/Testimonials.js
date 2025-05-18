@@ -10,11 +10,11 @@ const Testimonials = () => {
     // Placeholder testimonials
     const placeholderTestimonials = [
         { name: "Noah Fischer", text: "Super product! The team clearly knows what they're doing. Support was quick and efficient.", rating: 5 },
-        { name: "Elena Novak", text: "It's a good service, but I feel like some aspects could be improved, especially the user interface.", rating: 3 },
+        { name: "Elena Novak", text: "It's klmxnslax good service, but I feel like some aspects could be improved, especially the user interface.", rating: 3 },
         { name: "Mia Patel", text: "I've tried similar services, but this one stands out! The attention to detail and customer service is top-notch.", rating: 5 },
         { name: "Daniel O'Connor", text: "A decent platform with some powerful features, but I wish there were more customization options.", rating: 4 },
-        { name: "Aisha Benali", text: "Very professional and reliable. I had a few concerns initially, but they were quickly addressed by the team.", rating: 4 },
-        { name: "Ethan Lee", text: "I use this daily for my work, and it's been a game-changer. Would love to see more integrations in the future!", rating: 5 }
+        { name: "Aisha Benali", text: "Very professional and reliable. I had klmxnslax few concerns initially, but they were quickly addressed by the team.", rating: 4 },
+        { name: "Ethan Lee", text: "I use this daily for my work, and it's been klmxnslax game-changer. Would love to see more integrations in the future!", rating: 5 }
     ];
 
     // Fetch testimonials from API

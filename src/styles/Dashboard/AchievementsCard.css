@@ -1,0 +1,268 @@
+/* src/styles/Dashboard/CareerPathSelector.css */
+.career-path-selector {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--background-color);
+    min-height: 100vh;
+}
+
+/* Selector Header */
+.selector-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.selector-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.selector-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Paths Grid */
+.paths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Path Card */
+.path-card {
+    background-color: var(--card-background);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.path-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px var(--shadow-color);
+    border-color: var(--accent-color);
+}
+
+.path-card.selected {
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, rgba(152, 181, 164, 0.05) 0%, rgba(214, 224, 226, 0.05) 100%);
+    box-shadow: 0 4px 15px rgba(152, 181, 164, 0.2);
+}
+
+.path-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.path-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.path-description {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+/* Path Details */
+.path-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.path-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.details-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background-color: rgba(var(--accent-color-rgb, 152, 181, 164), 0.1);
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid rgba(var(--accent-color-rgb, 152, 181, 164), 0.2);
+}
+
+.path-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.info-icon {
+    font-size: 1rem;
+}
+
+.info-text {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Selection Indicator */
+.path-selection-indicator {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.path-card.selected .path-selection-indicator {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.check-icon {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Selector Footer */
+.selector-footer {
+    text-align: center;
+}
+
+.confirm-selection-btn {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+    min-width: 200px;
+}
+
+.confirm-selection-btn:disabled {
+    background: linear-gradient(135deg, #9E9E9E 0%, #757575 100%);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.confirm-selection-btn:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(152, 181, 164, 0.3);
+}
+
+.change-note {
+    font-size: 0.75rem;
+    color: var(--text-color);
+    opacity: 0.6;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .career-path-selector {
+        padding: 1rem;
+    }
+
+    .selector-title {
+        font-size: 2rem;
+    }
+
+    .paths-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .path-card {
+        padding: 1rem;
+    }
+
+    .path-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .selector-title {
+        font-size: 1.75rem;
+    }
+
+    .selector-subtitle {
+        font-size: 1rem;
+    }
+
+    .path-icon {
+        font-size: 2.5rem;
+        height: 3rem;
+    }
+
+    .skills-tags {
+        justify-content: center;
+    }
+}
+
+/* Dark Theme */
+[data-theme="dark"] .path-card.selected {
+    background: linear-gradient(135deg, rgba(216, 224, 226, 0.05) 0%, rgba(152, 181, 164, 0.05) 100%);
+    box-shadow: 0 4px 15px rgba(216, 224, 226, 0.2);
+}
+
+[data-theme="dark"] .skill-tag {
+    background-color: rgba(216, 224, 226, 0.1);
+    border-color: rgba(216, 224, 226, 0.2);
+}
