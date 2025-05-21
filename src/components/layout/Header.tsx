@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaUser, FaSignInAlt, FaGlobe, FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
+import { useTheme } from '../../utils/themeContext';
 import styles from './Header.module.css';
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check localStorage first, then system preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme === 'dark';
-    }
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+  const { darkMode: isDarkMode, toggleTheme } = useTheme();
 
   // Apply theme on initial load and when it changes
   useEffect(() => {
@@ -36,11 +29,11 @@ const Header: React.FC = () => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = 'auto';
     }
     
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = 'auto';
     };
   }, [isMenuOpen]);
 
@@ -50,10 +43,6 @@ const Header: React.FC = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-  };
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
   };
 
   const changeLanguage = (lang: string) => {
@@ -70,7 +59,7 @@ const Header: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link to="/">
-            <img src="/favicon.ico" alt="JunaGO" width="36" height="36" />
+            <img src={isDarkMode ? "/assets/logowhite.png" : "/assets/logodark.png"} alt="JunaGO" width="120" height="40" />
           </Link>
         </div>
         
@@ -88,7 +77,7 @@ const Header: React.FC = () => {
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? t('close_menu') : t('open_menu')}
         >
-          {isMenuOpen ? <FaTimes /> : <FaBars />}
+          {isMenuOpen ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
         </button>
 
         {/* Mobile menu overlay */}
@@ -138,7 +127,7 @@ const Header: React.FC = () => {
             </li>
             <li className={styles.navItem}>
               <NavLink 
-                to="/project" 
+                to="/community" 
                 className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
                 onClick={closeMenu}
               >
@@ -154,7 +143,7 @@ const Header: React.FC = () => {
               onClick={toggleTheme}
               aria-label={isDarkMode ? t('switch_to_light_mode') : t('switch_to_dark_mode')}
             >
-              {isDarkMode ? <FaSun /> : <FaMoon />}
+              {isDarkMode ? <i className="fas fa-sun"></i> : <i className="fas fa-moon"></i>}
             </button>
             
             <Link to="/cart" className={styles.cartLink} onClick={closeMenu}>
@@ -186,7 +175,7 @@ const Header: React.FC = () => {
             </div>
 
             <Link to="/login" className={styles.loginButton} onClick={closeMenu}>
-              <FaSignInAlt className={styles.loginIcon} />
+              <i className={`fas fa-sign-in-alt ${styles.loginIcon}`}></i>
               <span>{t('login')}</span>
             </Link>
           </div>
@@ -199,7 +188,7 @@ const Header: React.FC = () => {
             onClick={toggleTheme}
             aria-label={isDarkMode ? t('switch_to_light_mode') : t('switch_to_dark_mode')}
           >
-            {isDarkMode ? <FaSun /> : <FaMoon />}
+            {isDarkMode ? <i className="fas fa-sun"></i> : <i className="fas fa-moon"></i>}
           </button>
           
           <Link to="/cart" className={styles.cartLink}>
@@ -231,7 +220,7 @@ const Header: React.FC = () => {
           </div>
 
           <Link to="/login" className={styles.loginButton}>
-            <FaSignInAlt className={styles.loginIcon} />
+            <i className={`fas fa-sign-in-alt ${styles.loginIcon}`}></i>
             <span>{t('login')}</span>
           </Link>
         </div>

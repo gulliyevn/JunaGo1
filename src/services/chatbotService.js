@@ -154,10 +154,13 @@ export const getDemoResponse = (message = "") => {
   return { message: demoResponses.fallback };
 };
 
-export default {
+// Create export object
+const chatbotService = {
   sendMessage,
   getCourseHelp,
   generateExercises,
   explainCode,
   getDemoResponse
-}; 
+};
+
+export default chatbotService; 

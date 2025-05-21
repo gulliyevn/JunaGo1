@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevConnect Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="w-60 bg-white border-r border-gray-200 flex-shrink-0 h-full flex flex-col">
+            <!-- DevConnect Header -->
+            <div class="p-4 flex items-center justify-between border-b border-gray-200">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">DevConnect</span>
+                </div>
+                <button class="text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- User Profile -->
+            <div class="p-4 border-b border-gray-200 flex items-center">
+                <div class="w-12 h-12 rounded-full bg-gray-200 relative overflow-hidden flex items-center justify-center mr-3">
+                    <img src="/api/placeholder/48/48" alt="Avatar" class="absolute inset-0 w-full h-full object-cover" />
+                    <span class="text-lg text-gray-600">A</span>
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                </div>
+                <div>
+                    <h3 class="font-medium text-gray-900">Alex Peterson</h3>
+                    <p class="text-sm text-gray-500">Student Developer</p>
+                </div>
+            </div>
+            
+            <!-- Main Navigation -->
+            <nav class="mt-2 px-3 flex-1">
+                <a href="#home" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span>Home</span>
+                </a>
+                
+                <a href="#profile" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition duration-200 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span>Profile</span>
+                </a>
+                
+                <a href="#projects" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 rounded-lg transition duration-200 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                    </svg>
+                    <span>Projects</span>
+                </a>
+                
+                <a href="#community" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition duration-200 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span>Community</span>
+                </a>
+                
+                <a href="#messages" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition duration-200 mt-1 justify-between">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <span>Messages</span>
+                    </div>
+                    <span class="bg-red-500 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full">3</span>
+                </a>
+                
+                <a href="#notifications" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition duration-200 mt-1 justify-between">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span>Notifications</span>
+                    </div>
+                    <span class="bg-yellow-500 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full">5</span>
+                </a>
+                
+                <a href="#events" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition duration-200 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>Events</span>
+                </a>
+                
+                <a href="#resources" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition duration-200 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <span>Resources</span>
+                </a>
+                
+                <!-- Divider -->
+                <div class="border-t border-gray-200 my-6"></div>
+                
+                <!-- My Groups -->
+                <div class="mb-4">
+                    <h3 class="text-xs font-medium uppercase tracking-wider text-gray-500 px-4 mb-3">MY GROUPS</h3>
+                    
+                    <a href="#javascript-developers" class="flex items-center px-4 py-2 hover:bg-gray-100 rounded-lg transition duration-200">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-medium mr-3">JS</div>
+                        <span class="text-gray-700">JavaScript Developers</span>
+                    </a>
+                    
+                    <a href="#ui-ux-designers" class="flex items-center px-4 py-2 hover:bg-gray-100 rounded-lg transition duration-200 mt-1">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-medium mr-3">UI</div>
+                        <span class="text-gray-700">UI/UX Designers</span>
+                    </a>
+                    
+                    <a href="#it-students" class="flex items-center px-4 py-2 hover:bg-gray-100 rounded-lg transition duration-200 mt-1">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-medium mr-3">ST</div>
+                        <span class="text-gray-700">IT Students</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <!-- Settings Link -->
+            <div class="border-t border-gray-200 mt-auto">
+                <a href="#settings" class="flex items-center px-4 py-4 text-gray-700 hover:bg-gray-100 transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto">
+            <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Profile Header (LinkedIn-style) -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-8">
+            <div class="h-40 bg-gradient-to-r from-blue-500 to-indigo-600 relative">
+                <button class="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 transition text-white rounded-full p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="px-8 relative">
+                <div class="w-32 h-32 rounded-full border-4 border-white bg-white shadow-md absolute -top-16 overflow-hidden">
+                    <img src="/api/placeholder/128/128" alt="Profile" class="w-full h-full object-cover" />
+                </div>
+                <div class="pt-20 pb-8 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900">Alex Peterson</h1>
+                        <p class="text-gray-600">Full Stack Developer | React & Node.js Specialist</p>
+                        <p class="text-gray-500 text-sm mt-1">San Francisco, CA · <span class="text-blue-600">Contact info</span></p>
+                        <div class="flex items-center space-x-2 mt-2">
+                            <span class="text-sm text-blue-600 font-medium flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                DevConnect
+                            </span>
+                            <span class="text-sm text-blue-600 font-medium flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                                Tech University
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-3 mt-4 md:mt-0">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition">
+                            <i class="fas fa-plus mr-1"></i> Connect
+                        </button>
+                        <button class="border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition">
+                            <i class="fas fa-envelope mr-1"></i> Message
+                        </button>
+                        <button class="border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- GitHub & LinkedIn Stats Combined -->
+                <div class="border-t border-gray-200 pt-6 pb-2">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="flex flex-col items-center md:items-start">
+                            <span class="text-sm text-gray-500">Repositories</span>
+                            <div class="flex items-center mt-1">
+                                <i class="fas fa-code-branch text-gray-700 mr-2"></i>
+                                <span class="text-lg font-bold text-gray-900">48</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center md:items-start">
+                            <span class="text-sm text-gray-500">Connections</span>
+                            <div class="flex items-center mt-1">
+                                <i class="fas fa-user-friends text-gray-700 mr-2"></i>
+                                <span class="text-lg font-bold text-gray-900">512</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center md:items-start">
+                            <span class="text-sm text-gray-500">Stars Received</span>
+                            <div class="flex items-center mt-1">
+                                <i class="fas fa-star text-gray-700 mr-2"></i>
+                                <span class="text-lg font-bold text-gray-900">324</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center md:items-start">
+                            <span class="text-sm text-gray-500">Profile Views</span>
+                            <div class="flex items-center mt-1">
+                                <i class="fas fa-eye text-gray-700 mr-2"></i>
+                                <span class="text-lg font-bold text-gray-900">1.2k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Controls (GitHub-style) -->
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+            <div class="flex space-x-1 mb-4 md:mb-0">
+                <button class="px-3 py-2 flex items-center text-sm font-medium rounded-md bg-gray-100 text-gray-800">
+                    <i class="fas fa-book mr-1.5"></i> All
+                </button>
+                <button class="px-3 py-2 flex items-center text-sm font-medium rounded-md hover:bg-gray-100">
+                    <i class="fas fa-code mr-1.5"></i> Sources
+                </button>
+                <button class="px-3 py-2 flex items-center text-sm font-medium rounded-md hover:bg-gray-100">
+                    <i class="fas fa-archive mr-1.5"></i> Archived
+                </button>
+            </div>
+            <div class="flex space-x-3">
+                <div class="relative">
+                    <input type="text" placeholder="Find a project..." class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full" />
+                    <i class="fas fa-search text-gray-400 absolute left-3 top-2.5"></i>
+                </div>
+                <div class="hidden md:flex">
+                    <button class="flex items-center bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-l-md border-r border-gray-300">
+                        <i class="fas fa-sort mr-1.5"></i>
+                        <span>Sort</span>
+                    </button>
+                    <button class="bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-r-md">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                </div>
+                <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition flex items-center">
+                    <i class="fas fa-plus mr-1.5"></i> New Project
+                </button>
+            </div>
+        </div>
+
+        <!-- Projects Grid (Combining GitHub repo style with LinkedIn project style) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Project Card 1 -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                <i class="fas fa-code-branch text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-900 hover:text-blue-600">DevConnect</h3>
+                                <p class="text-gray-500 text-sm">Updated 3 days ago</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="text-gray-500 hover:text-blue-600">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <div class="relative group">
+                                <button class="text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4">Modern developer networking platform with TypeScript, Redux Toolkit, MongoDB, and real-time collaboration features.</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-md text-xs font-medium">React</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-md text-xs font-medium">TypeScript</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-md text-xs font-medium">Redux</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-md text-xs font-medium">MongoDB</span>
+                    </div>
+                    
+                    <!-- GitHub + LinkedIn Engagement Stats -->
+                    <div class="flex flex-wrap items-center text-sm text-gray-500 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-star mr-1 text-yellow-500"></i>
+                            <span>128 stars</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-code-branch mr-1"></i>
+                            <span>24 forks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-thumbs-up mr-1 text-blue-500"></i>
+                            <span>43 likes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-comment mr-1"></i>
+                            <span>12 comments</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Contributors (LinkedIn style) -->
+                    <div class="mt-5 pt-5 border-t border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="/api/placeholder/32/32" alt="User 1" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="/api/placeholder/32/32" alt="User 2" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="/api/placeholder/32/32" alt="User 3" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-500">+5</div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Card 2 -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-600 mr-4">
+                                <i class="fas fa-mobile-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-900 hover:text-blue-600">Travel App UI</h3>
+                                <p class="text-gray-500 text-sm">Updated 1 week ago</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="text-yellow-500 hover:text-yellow-600">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <div class="relative group">
+                                <button class="text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4">Beautiful travel booking application UI built with React Native and Expo, featuring interactive maps and animations.</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-medium">React Native</span>
+                        <span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-medium">Expo</span>
+                        <span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-medium">Animation</span>
+                        <span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-medium">Maps API</span>
+                    </div>
+                    
+                    <!-- GitHub + LinkedIn Engagement Stats -->
+                    <div class="flex flex-wrap items-center text-sm text-gray-500 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-star mr-1 text-yellow-500"></i>
+                            <span>76 stars</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-code-branch mr-1"></i>
+                            <span>15 forks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-thumbs-up mr-1 text-blue-500"></i>
+                            <span>28 likes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-comment mr-1"></i>
+                            <span>8 comments</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Contributors (LinkedIn style) -->
+                    <div class="mt-5 pt-5 border-t border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="/api/placeholder/32/32" alt="User 1" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="/api/placeholder/32/32" alt="User 2" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-500">+2</div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Card 3 -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 mr-4">
+                                <i class="fas fa-database text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-900 hover:text-blue-600">E-commerce API</h3>
+                                <p class="text-gray-500 text-sm">Updated 2 weeks ago</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="text-gray-500 hover:text-yellow-500">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <div class="relative group">
+                                <button class="text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4">Complete RESTful API for e-commerce platforms with Node.js, Express, and MongoDB. Includes authentication, payments, and order management.</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded-md text-xs font-medium">Node.js</span>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded-md text-xs font-medium">Express</span>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded-md text-xs font-medium">MongoDB</span>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded-md text-xs font-medium">JWT</span>
+                    </div>
+                    
+                    <!-- GitHub + LinkedIn Engagement Stats -->
+                    <div class="flex flex-wrap items-center text-sm text-gray-500 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-star mr-1 text-yellow-500"></i>
+                            <span>92 stars</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-code-branch mr-1"></i>
+                            <span>31 forks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-thumbs-up mr-1 text-blue-500"></i>
+                            <span>19 likes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-comment mr-1"></i>
+                            <span>7 comments</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Contributors (LinkedIn style) -->
+                    <div class="mt-5 pt-5 border-t border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="/api/placeholder/32/32" alt="User 1" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="/api/placeholder/32/32" alt="User 2" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="/api/placeholder/32/32" alt="User 3" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="/api/placeholder/32/32" alt="User 4" class="w-8 h-8 rounded-full border-2 border-white"/>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Card 4 -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center text-red-600 mr-4">
+                                <i class="fas fa-fire text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-900 hover:text-blue-600">AI Image Generator</h3>
+                                <p class="text-gray-500 text-sm">Updated 1 month ago</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="text-gray-500 hover:text-yellow-500">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <div class="relative group">
+                                <button class="text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4">Web application that uses AI to generate and manipulate images based on text prompts. Built with React, Node.js and TensorFlow.js.</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="px-2 py-1 bg-red-100 text-red-700 rounded-md text-xs font-medium">AI/ML</span>
+                        <span class="px-2 py-1 bg-red-100 text-red-700 rounded-md text-xs font-medium">TensorFlow</span>
+                        <span class="px-2 py-1 bg-red-100 text-red-700 rounded-md text-xs font-medium">React</span>
+                        <span class="px-2 py-1 bg-red-100 text-red-700 rounded-md text-xs font-medium">Canvas API</span>
+                    </div>
+                    
+                    <!-- GitHub + LinkedIn Engagement Stats -->
+                    <div class="flex flex-wrap items-center text-sm text-gray-500 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-star mr-1 text-yellow-500"></i>
+                            <span>143 stars</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-code-branch mr-1"></i>
+                            <span>42 forks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-thumbs-up mr-1 text-blue-500"></i>
+                            <span>56 likes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-comment mr-1"></i>
+                            <span>23 comments</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Contributors (LinkedIn style) -->
+                    <div class="mt-5 pt-5 border-t border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="/api/placeholder/32/32" alt="User 1" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="/api/placeholder/32/32" alt="User 2" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="/api/placeholder/32/32" alt="User 3" class="w-8 h-8 rounded-full border-2 border-white"/>
+                                <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-500">+8</div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Timeline (LinkedIn + GitHub style) -->
+        <div class="mt-10 bg-white rounded-xl shadow-sm p-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">Recent Activity</h2>
+            
+            <div class="space-y-8">
+                <!-- Activity Item 1 -->
+                <div class="flex">
+                    <div class="mr-4 flex-shrink-0">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center mb-1">
+                            <h4 class="font-medium text-gray-900">Created new branch</h4>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-gray-500 text-sm">3 hours ago</span>
+                        </div>
+                        <p class="text-gray-600">Created <span class="font-medium">feature/auth-system</span> from <span class="font-medium">main</span> in <span class="font-medium text-blue-600">DevConnect</span></p>
+                        <div class="mt-2 p-3 bg-gray-50 rounded-lg text-sm">
+                            <pre class="text-gray-600 whitespace-pre-wrap"><span class="text-green-600">+</span> Added JWT authentication with refresh tokens
+<span class="text-green-600">+</span> Improved login/signup forms
+<span class="text-green-600">+</span> Implemented OAuth providers</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Item 2 -->
+                <div class="flex">
+                    <div class="mr-4 flex-shrink-0">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center mb-1">
+                            <h4 class="font-medium text-gray-900">Received recognition</h4>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-gray-500 text-sm">Yesterday</span>
+                        </div>
+                        <p class="text-gray-600"><span class="font-medium">Alex Johnson</span> and <span class="font-medium">5 others</span> starred your <span class="font-medium text-blue-600">AI Image Generator</span> project</p>
+                        <div class="mt-2 flex">
+                            <img src="/api/placeholder/32/32" alt="User 1" class="w-8 h-8 rounded-full border-2 border-white"/>
+                            <img src="/api/placeholder/32/32" alt="User 2" class="w-8 h-8 rounded-full border-2 border-white -ml-2"/>
+                            <img src="/api/placeholder/32/32" alt="User 3" class="w-8 h-8 rounded-full border-2 border-white -ml-2"/>
+                            <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-500 -ml-2">+3</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Item 3 -->
+                <div class="flex">
+                    <div class="mr-4 flex-shrink-0">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center mb-1">
+                            <h4 class="font-medium text-gray-900">Made 14 commits</h4>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-gray-500 text-sm">2 days ago</span>
+                        </div>
+                        <p class="text-gray-600">Pushed to <span class="font-medium">main</span> in <span class="font-medium text-blue-600">E-commerce API</span></p>
+                        <div class="mt-2 flex justify-between items-center p-3 bg-gray-50 rounded-lg text-sm">
+                            <div class="text-gray-600">
+                                <i class="fas fa-code-commit mr-1"></i> Latest commit: <span class="font-mono">#8fd3b2c</span>
+                            </div>
+                            <span class="text-blue-600 hover:underline cursor-pointer">View changes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Item 4 -->
+                <div class="flex">
+                    <div class="mr-4 flex-shrink-0">
+                        <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center mb-1">
+                            <h4 class="font-medium text-gray-900">Added new team member</h4>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-gray-500 text-sm">5 days ago</span>
+                        </div>
+                        <p class="text-gray-600">Added <span class="font-medium">Sarah Kim</span> as a contributor to <span class="font-medium text-blue-600">Travel App UI</span></p>
+                        <div class="mt-2">
+                            <div class="flex items-center">
+                                <img src="/api/placeholder/32/32" alt="Sarah Kim" class="w-8 h-8 rounded-full mr-2"/>
+                                <div>
+                                    <p class="font-medium text-gray-900">Sarah Kim</p>
+                                    <p class="text-xs text-gray-500">UI/UX Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="mt-6 w-full py-2 bg-gray-100 hover:bg-gray-200 rounded-md text-gray-700 font-medium transition">
+                Show more activity
+            </button>
+        </div>
+        
+        <!-- Recommended Connections (LinkedIn style) -->
+        <div class="mt-8 bg-white rounded-xl shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-gray-900">People You May Know</h2>
+                <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium">See all</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Connection 1 -->
+                <div class="flex items-center">
+                    <img src="/api/placeholder/64/64" alt="User" class="w-16 h-16 rounded-full mr-4"/>
+                    <div class="flex-grow">
+                        <h4 class="font-medium text-gray-900">Emma Wilson</h4>
+                        <p class="text-gray-500 text-sm">Frontend Developer at Tech Co.</p>
+                        <p class="text-gray-400 text-xs mt-1">12 mutual connections</p>
+                    </div>
+                    <button class="ml-2 text-blue-600 border border-blue-600 hover:bg-blue-50 px-3 py-1 rounded-md text-sm font-medium">
+                        <i class="fas fa-user-plus mr-1"></i> Connect
+                    </button>
+                </div>
+                
+                <!-- Connection 2 -->
+                <div class="flex items-center">
+                    <img src="/api/placeholder/64/64" alt="User" class="w-16 h-16 rounded-full mr-4"/>
+                    <div class="flex-grow">
+                        <h4 class="font-medium text-gray-900">Michael Chen</h4>
+                        <p class="text-gray-500 text-sm">Backend Engineer at Data Inc.</p>
+                        <p class="text-gray-400 text-xs mt-1">8 mutual connections</p>
+                    </div>
+                    <button class="ml-2 text-blue-600 border border-blue-600 hover:bg-blue-50 px-3 py-1 rounded-md text-sm font-medium">
+                        <i class="fas fa-user-plus mr-1"></i> Connect
+                    </button>
+                </div>
+                
+                <!-- Connection 3 -->
+                <div class="flex items-center">
+                    <img src="/api/placeholder/64/64" alt="User" class="w-16 h-16 rounded-full mr-4"/>
+                    <div class="flex-grow">
+                        <h4 class="font-medium text-gray-900">Sophia Rodriguez</h4>
+                        <p class="text-gray-500 text-sm">DevOps Specialist at Cloud Systems</p>
+                        <p class="text-gray-400 text-xs mt-1">5 mutual connections</p>
+                    </div>
+                    <button class="ml-2 text-blue-600 border border-blue-600 hover:bg-blue-50 px-3 py-1 rounded-md text-sm font-medium">
+                        <i class="fas fa-user-plus mr-1"></i> Connect
+                    </button>
+                </div>
+            </div>
+        </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

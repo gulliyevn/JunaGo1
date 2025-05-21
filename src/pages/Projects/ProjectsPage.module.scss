@@ -1,0 +1,142 @@
+.projectsPage {
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--workspace-bg-secondary);
+}
+
+.projectsContainer {
+  padding: 0 32px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.activityContainer {
+  width: 100%;
+  max-width: 380px;
+  flex-shrink: 0;
+}
+
+.filtersContainer {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filterButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.filterButton {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--workspace-text);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  i {
+    margin-right: 6px;
+  }
+
+  &:hover {
+    background-color: var(--workspace-hover);
+  }
+
+  &.active {
+    background-color: var(--workspace-accent);
+    color: white;
+  }
+}
+
+.sortContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sortSelect {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--workspace-border);
+  background-color: var(--workspace-bg-primary);
+  color: var(--workspace-text);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: var(--workspace-accent);
+  }
+}
+
+.newProjectButton {
+  padding: 8px 16px;
+  background-color: var(--workspace-accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .projectsContainer {
+    flex-direction: column;
+  }
+
+  .activityContainer {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .projectsContainer {
+    padding: 0 16px 16px;
+    gap: 16px;
+  }
+
+  .filtersContainer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filterButtons {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  
+  .filterButton {
+    white-space: nowrap;
+  }
+  
+  .sortContainer {
+    justify-content: flex-start;
+  }
+} 

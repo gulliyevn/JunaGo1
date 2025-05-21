@@ -1,6 +1,11 @@
 /* Base styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+html, body {
+  height: 100%;
+  overflow-y: auto !important;
+}
+
 :root {
   /* Colors from our variables.scss */
   --primary: #2563eb;
@@ -26,6 +31,13 @@
   --bg-dark: #111827;
   
   --border-color: #e5e7eb;
+
+  /* Theme specific variables */
+  --text-color: #1f2937;
+  --background-color: #ffffff;
+  --footer-background: #1a1a1a;
+  --accent-color: #98B5A4;
+  --button-hover-bg: #f1f1f1;
 }
 
 * {
@@ -74,6 +86,13 @@ button {
   --text-muted: #9ca3af;
   
   --border-color: #4b5563;
+  
+  /* Theme specific variables */
+  --text-color: #f0f0f0;
+  --background-color: #111827;
+  --footer-background: #0f0f0f;
+  --accent-color: #98B5A4;
+  --button-hover-bg: #333333;
   
   background-color: var(--bg-dark);
   color: var(--text-primary);

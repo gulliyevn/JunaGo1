@@ -27,10 +27,8 @@ const ResetPassword = () => {
 
         if (storedEmail) {
             setFormData(prev => ({ ...prev, email: storedEmail }));
-            console.log('Using stored email:', storedEmail);
         } else if (urlEmail) {
             setFormData(prev => ({ ...prev, email: urlEmail }));
-            console.log('Using URL email:', urlEmail);
         } else {
             console.warn('No email found in localStorage or URL!');
         }
@@ -88,8 +86,6 @@ const ResetPassword = () => {
         setLoading(true);
         setNotification('');
 
-        console.log('Sending request to server...');
-
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://194.87.95.28:8080'}/reset-password`, {
                 method: 'POST',
@@ -103,7 +99,6 @@ const ResetPassword = () => {
             });
 
             const result = await response.json();
-            console.log('Server response:', result);
 
             if (!response.ok) {
                 setNotification(result.message || 'Password reset failed.');

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JunaGO Workspace</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Monaco Editor CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navigation Bar -->
+        <div class="top-navbar">
+            <div class="menu-section">
+                <div class="menu-item">File</div>
+                <div class="menu-item">Edit</div>
+                <div class="menu-item">View</div>
+                <div class="menu-item">Navigate</div>
+                <div class="menu-item">Code</div>
+                <div class="menu-item">Run</div>
+                <div class="menu-item">Tools</div>
+                <div class="menu-item">Window</div>
+                <div class="menu-item">Help</div>
+            </div>
+        </div>
+        
+        <!-- Workspace Header -->
+        <div class="workspace-header">
+            <div class="workspace-title">
+                <i class="fas fa-code"></i>
+                <span>JunaGO Workspace</span>
+            </div>
+            <div class="workspace-actions">
+                <button class="action-button run-button">
+                    <i class="fas fa-play"></i>
+                    <span>Run</span>
+                </button>
+                <button class="action-button invite-button">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Invite</span>
+                </button>
+                <button class="action-button deploy-button">
+                    <i class="fas fa-rocket"></i>
+                    <span>Deploy</span>
+                </button>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" class="theme-switch">
+                    <label for="theme-switch" class="theme-label"></label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Project Explorer Sidebar -->
+            <div class="project-explorer">
+                <div class="explorer-header">
+                    <div class="explorer-title">Project</div>
+                    <button class="add-button">+</button>
+                </div>
+                <div class="file-tree">
+                    <div class="folder">
+                        <div class="folder-name">
+                            <i class="fas fa-folder"></i>
+                            <span>project</span>
+                        </div>
+                        <div class="folder-content">
+                            <div class="file active-file" data-file="index.html" data-path="project/index.html">
+                                <i class="fas fa-file-code"></i>
+                                <span>index.html</span>
+                            </div>
+                            <div class="file" data-file="styles.css" data-path="project/styles.css">
+                                <i class="fas fa-file-code"></i>
+                                <span>styles.css</span>
+                            </div>
+                            <div class="folder">
+                                <div class="folder-name">
+                                    <i class="fas fa-folder"></i>
+                                    <span>js</span>
+                                </div>
+                                <div class="folder-content">
+                                    <div class="file" data-file="main.js" data-path="project/js/main.js">
+                                        <i class="fas fa-file-code"></i>
+                                        <span>main.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Editor Area -->
+            <div class="editor-container">
+                <div id="monaco-editor"></div>
+                <div class="editor-status-bar">
+                    <div class="status-items">
+                        <div class="status-item">HTML</div>
+                        <div class="status-item">UTF-8</div>
+                        <div class="status-item">LF</div>
+                    </div>
+                    <div class="status-position">Ln 1, Col 1</div>
+                    <div class="status-items">
+                        <div class="status-item">Spaces: 2</div>
+                        <div class="status-item">main*</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Preview Panel (initially hidden) -->
+        <div class="preview-panel" id="preview-panel">
+            <div class="preview-header">
+                <span>Preview</span>
+                <button class="close-preview-button">×</button>
+            </div>
+            <iframe id="preview-iframe" src="project/index.html"></iframe>
+        </div>
+    </div>
+    
+    <script src="editor.js"></script>
+</body>
+</html> 

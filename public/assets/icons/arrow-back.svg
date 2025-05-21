@@ -1,3 +1,8 @@
-<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <path d="M180 64H340C356 64 370 78 370 94V418C370 434 356 448 340 448H180C164 448 150 434 150 418V94C150 78 164 64 180 64ZM170 94V418C170 423 174 428 180 428H340C346 428 350 423 350 418V94C350 89 346 84 340 84H180C174 84 170 89 170 94ZM300 254C300 264 292 274 280 274C268 274 260 264 260 254C260 244 268 234 280 234C292 234 300 244 300 254Z" fill="currentColor"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g fill="currentColor">
+            <path d="M20,11 L7.83,11 L13.42,5.41 L12,4 L4,12 L12,20 L13.41,18.59 L7.83,13 L20,13 L20,11 Z"></path>
+        </g>
+    </g>
 </svg> 

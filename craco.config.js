@@ -1,3 +1,5 @@
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+
 module.exports = {
   webpack: {
     configure: (webpackConfig) => {
@@ -27,8 +29,23 @@ module.exports = {
         }
       }
 
+      // Игнорировать предупреждения о source maps для Monaco Editor
+      webpackConfig.ignoreWarnings = [
+        /Failed to parse source map/,
+        (warning) => warning.message.includes('source-map-loader')
+      ];
+
       return webpackConfig;
     },
+    plugins: {
+      add: [
+        new MonacoWebpackPlugin({
+          languages: ['javascript', 'typescript', 'html', 'css', 'json', 'markdown'],
+          filename: 'static/[name].worker.js',
+          publicPath: '/'
+        })
+      ]
+    }
   },
   typescript: {
     enableTypeChecking: true,

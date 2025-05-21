@@ -1,5 +1,8 @@
 import { ApiError } from '../types';
 
+// Re-export all utility functions
+export * from './dateUtils';
+
 export const formatDate = (date: string | Date): string => {
   return new Date(date).toLocaleDateString();
 };

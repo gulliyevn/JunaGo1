@@ -1,6 +1,6 @@
 // src/App.js (с системой безопасности)
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './utils/themeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { ChatbotProvider } from './contexts/ChatbotContext';
@@ -37,28 +37,10 @@ import FeedbackPage from './pages/Feedback/FeedbackPage';
 import LearningPathPage from './pages/LearningPath/LearningPathPage';
 import CartPage from './pages/Cart/CartPage';
 import WorkspacePage from './pages/Workspace/WorkspacePage';
+import Articles from './pages/Articles';
+import ProjectsPage from './pages/Projects/ProjectsPage';
 
 // Simple page components
-const ArticlesPage = () => (
-  <div className="container">
-    <h1>Articles Page</h1>
-    <p>Here you'll find our latest articles and tutorials.</p>
-    <div className="articles-grid">
-      <div className="article-card">
-        <h2>Getting Started with React</h2>
-        <p>Learn the basics of React and how to create your first component.</p>
-      </div>
-      <div className="article-card">
-        <h2>Advanced TypeScript Techniques</h2>
-        <p>Master TypeScript with these advanced tips and tricks.</p>
-      </div>
-      <div className="article-card">
-        <h2>CSS Grid Layout</h2>
-        <p>A comprehensive guide to CSS Grid Layout.</p>
-      </div>
-    </div>
-  </div>
-);
 
 const ProjectPage = () => (
   <div className="container">
@@ -106,8 +88,7 @@ function App() {
               <Route path="/" element={<MainLayout><HomePage /></MainLayout>} />
               <Route path="/courses" element={<MainLayout><Courses /></MainLayout>} />
               <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
-              <Route path="/articles" element={<MainLayout><ArticlesPage /></MainLayout>} />
-              <Route path="/community" element={<MainLayout><ProjectPage /></MainLayout>} />
+              <Route path="/articles" element={<MainLayout><Articles /></MainLayout>} />
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/feedback" element={<FeedbackPage />} />
@@ -145,8 +126,21 @@ function App() {
                   <WorkspacePage />
                 </ProtectedRoute>
               } />
+              <Route path="/projects" element={
+                <ProtectedRoute>
+                  <ProjectsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/projects/:projectId" element={
+                <ProtectedRoute>
+                  <ProjectsPage />
+                </ProtectedRoute>
+              } />
               <Route path="/upgrade" element={<MainLayout><UpgradePlan /></MainLayout>} />
               <Route path="/cart" element={<MainLayout><CartPage /></MainLayout>} />
+
+              {/* Redirects */}
+              <Route path="/community" element={<Navigate to="/projects" replace />} />
 
               {/* 404 page */}
               <Route path="*" element={<MainLayout><NotFoundPage /></MainLayout>} />

@@ -5,7 +5,7 @@ import { useTheme } from '../../utils/themeContext';
 import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation();
+  useTranslation();
   const { theme } = useTheme();
   
   return (
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                 <li><Link to="/workspace">Workspace</Link></li>
                 <li><Link to="/articles">Articles</Link></li>
                 <li><Link to="/roadmap">Roadmap</Link></li>
-                <li><Link to="/project">Project</Link></li>
+                <li><Link to="/community">Community</Link></li>
               </ul>
             </div>
             

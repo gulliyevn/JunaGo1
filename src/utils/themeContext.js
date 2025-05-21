@@ -17,10 +17,14 @@ export const ThemeProvider = ({ children }) => {
         if (darkMode) {
             document.documentElement.classList.add('dark-theme');
             document.documentElement.setAttribute('data-theme', 'dark');
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
             localStorage.setItem('theme', 'dark');
         } else {
             document.documentElement.classList.remove('dark-theme');
-            document.documentElement.removeAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
             localStorage.setItem('theme', 'light');
         }
     }, [darkMode]);

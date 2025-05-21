@@ -16,7 +16,8 @@
 @import 'Testimonials.css';
 @import 'Courses.css';
 @import 'CourseDetail.css';
-@import 'Courses.css';
+
+/* Component styles */
 @import 'components/CourseCard.css';
 
 /* Component styles */
@@ -27,7 +28,6 @@
 @import 'components/CourseContent.css';
 @import 'components/CodeEditor.css';
 @import 'components/CourseMaterials.css';
-@import 'components/CourseCard.css';
 @import 'components/FeaturedCourses.css';
 
 /* Basic styles */
@@ -37,11 +37,14 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  height: 100%;
+  overflow-y: auto !important; /* Ensure scrolling is allowed */
   font-family: 'Roboto', sans-serif;
   line-height: 1.5;
   background-color: var(--background-color);
   color: var(--text-color);
+  scroll-behavior: smooth;
 }
 
 a {
@@ -198,10 +201,6 @@ a, button, input, select {
 
 .dark-mode .console-output {
   background-color: #1a202c;
-}
-
-html, body {
-  scroll-behavior: smooth;
 }
 
 a:hover, button:hover {

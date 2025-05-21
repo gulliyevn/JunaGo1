@@ -116,8 +116,11 @@ export const translateLocale = async (localeObj, targetLang) => {
   }
 };
 
-export default {
+// Create export object
+const translationService = {
   translateText,
   batchTranslate,
   translateLocale
-}; 
+};
+
+export default translationService; 
