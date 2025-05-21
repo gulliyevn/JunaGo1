@@ -1,5 +1,6 @@
 // src/contexts/AuthContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { demoUser } from '../services/demoData';
 
 const AuthContext = createContext();
 
@@ -15,6 +16,9 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isDemoMode, setIsDemoMode] = useState(() => {
+        return localStorage.getItem('demoMode') === 'true';
+    });
 
     // API endpoint (в продакшне из environment variables)
     const API_BASE = process.env.REACT_APP_API_URL || 'http://194.87.95.28:8080';
@@ -22,10 +26,48 @@ export const AuthProvider = ({ children }) => {
     // Проверка токена при загрузке приложения
     useEffect(() => {
         checkAuthStatus();
+        // Слушаем изменения в localStorage для demoMode
+        const handleStorageChange = () => {
+            const demoModeActive = localStorage.getItem('demoMode') === 'true';
+            setIsDemoMode(demoModeActive);
+            
+            // Если включен демо-режим, устанавливаем демо-пользователя
+            if (demoModeActive) {
+                setUser(demoUser);
+                setIsAuthenticated(true);
+            } else if (!localStorage.getItem('authToken')) {
+                // Если выключили демо и нет токена - разлогиниваемся
+                setUser(null);
+                setIsAuthenticated(false);
+            }
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+        return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
+
+    // Дополнительный эффект для отслеживания изменений в demoMode
+    useEffect(() => {
+        if (isDemoMode) {
+            setUser(demoUser);
+            setIsAuthenticated(true);
+            setLoading(false);
+        } else if (!localStorage.getItem('authToken')) {
+            setUser(null);
+            setIsAuthenticated(false);
+        }
+    }, [isDemoMode]);
 
     const checkAuthStatus = async () => {
         try {
+            // Проверяем сначала демо-режим
+            if (localStorage.getItem('demoMode') === 'true') {
+                setUser(demoUser);
+                setIsAuthenticated(true);
+                setLoading(false);
+                return;
+            }
+
             const token = localStorage.getItem('authToken');
             if (!token) {
                 setLoading(false);
@@ -63,6 +105,13 @@ export const AuthProvider = ({ children }) => {
     };
 
     const login = async (email, password) => {
+        // В демо-режиме просто устанавливаем демо-пользователя
+        if (isDemoMode) {
+            setUser(demoUser);
+            setIsAuthenticated(true);
+            return { success: true, user: demoUser };
+        }
+
         try {
             const response = await fetch(`${API_BASE}/login`, {
                 method: 'POST',
@@ -95,6 +144,15 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = async () => {
+        // В демо-режиме просто устанавливаем режим в false
+        if (isDemoMode) {
+            localStorage.setItem('demoMode', 'false');
+            setIsDemoMode(false);
+            setUser(null);
+            setIsAuthenticated(false);
+            return;
+        }
+
         try {
             const token = localStorage.getItem('authToken');
             if (token) {
@@ -119,21 +177,34 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const toggleDemoMode = () => {
+        const newDemoMode = !isDemoMode;
+        localStorage.setItem('demoMode', String(newDemoMode));
+        setIsDemoMode(newDemoMode);
+    };
+
     // Проверка ролей пользователя
     const hasRole = (role) => {
         return user?.roles?.includes(role) || false;
     };
 
     const isPremium = () => {
+        // В демо-режиме всегда предоставляем премиум-доступ
+        if (isDemoMode) return true;
         return user?.subscription === 'premium' || hasRole('premium');
     };
 
     const isAdmin = () => {
+        // В демо-режиме тоже даем админские права
+        if (isDemoMode) return true;
         return hasRole('admin');
     };
 
     // Проверка доступа к курсу
     const canAccessCourse = (course) => {
+        // В демо-режиме даем доступ ко всем курсам
+        if (isDemoMode) return true;
+        
         if (!course) return false;
 
         // Публичные курсы доступны всем авторизованным
@@ -156,7 +227,9 @@ export const AuthProvider = ({ children }) => {
         isPremium,
         isAdmin,
         canAccessCourse,
-        checkAuthStatus
+        checkAuthStatus,
+        isDemoMode,
+        toggleDemoMode
     };
 
     return (

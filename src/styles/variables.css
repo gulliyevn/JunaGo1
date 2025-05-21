@@ -22,15 +22,15 @@
     --text-muted: #666666;
 }
 
-[data-theme="dark"] {
+[data-theme="dark"], .dark-theme {
     /* Темная тема */
-    --background-color: #1e1e1e;
+    --background-color: #1a1a1a;
     --text-color: #f0f0f0;
     --primary-color: #98B5A4;
     --secondary-color: #162A2C;
-    --accent-color: #D6E0E2;
-    --header-background: #1e1e1e;
-    --footer-background: #1e1e1e;
+    --accent-color: #60a5fa;
+    --header-background: #1a1a1a;
+    --footer-background: #1a1a1a;
     --card-background: #252525;
     --hero-gradient-from: #162A2C;
     --hero-gradient-to: #0a1718;
@@ -43,8 +43,6 @@
     --toggle-bg: #162A2C;
     --toggle-circle: #98B5A4;
 }
-
-
 
 /* Global reset */
 * {

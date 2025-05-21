@@ -1,0 +1,42 @@
+.chatbotButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.chatbotButton:hover {
+  transform: scale(1.05);
+  background-color: #0b5ed7;
+}
+
+.chatbotButton.open {
+  background-color: #dc3545;
+}
+
+.chatbotButton.open:hover {
+  background-color: #bb2d3b;
+}
+
+@media (max-width: 576px) {
+  .chatbotButton {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    bottom: 16px;
+    right: 16px;
+  }
+} 

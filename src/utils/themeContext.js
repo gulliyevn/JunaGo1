@@ -15,9 +15,11 @@ export const ThemeProvider = ({ children }) => {
     // Эффект для изменения темы
     useEffect(() => {
         if (darkMode) {
+            document.documentElement.classList.add('dark-theme');
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
         } else {
+            document.documentElement.classList.remove('dark-theme');
             document.documentElement.removeAttribute('data-theme');
             localStorage.setItem('theme', 'light');
         }
@@ -28,8 +30,11 @@ export const ThemeProvider = ({ children }) => {
         setDarkMode(!darkMode);
     };
 
+    // Получаем текущую тему как строку
+    const theme = darkMode ? 'dark' : 'light';
+
     return (
-        <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
+        <ThemeContext.Provider value={{ darkMode, toggleTheme, theme }}>
             {children}
         </ThemeContext.Provider>
     );
@@ -39,7 +44,7 @@ export const ThemeProvider = ({ children }) => {
 export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (context === undefined) {
-        throw new Error('useTheme must be used within klmxnslax ThemeProvider');
+        throw new Error('useTheme must be used within a ThemeProvider');
     }
     return context;
 };

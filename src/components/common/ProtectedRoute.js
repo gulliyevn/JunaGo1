@@ -5,7 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 // Компонент для защиты роутов
 const ProtectedRoute = ({ children, requirePremium = false, requireAdmin = false }) => {
-    const { isAuthenticated, isPremium, isAdmin, loading } = useAuth();
+    const { isAuthenticated, isPremium, isAdmin, loading, isDemoMode } = useAuth();
     const location = useLocation();
 
     // Показываем загрузку пока проверяем аутентификацию
@@ -16,6 +16,11 @@ const ProtectedRoute = ({ children, requirePremium = false, requireAdmin = false
                 <p>Проверка доступа...</p>
             </div>
         );
+    }
+
+    // В демо-режиме всегда разрешаем доступ
+    if (isDemoMode) {
+        return children;
     }
 
     // Если не авторизован, перенаправляем на логин
@@ -41,7 +46,12 @@ export default ProtectedRoute;
 
 // Компонент для отображения контента в зависимости от подписки
 export const PremiumContent = ({ children, fallback }) => {
-    const { isPremium } = useAuth();
+    const { isPremium, isDemoMode } = useAuth();
+
+    // В демо-режиме показываем весь контент
+    if (isDemoMode) {
+        return children;
+    }
 
     if (!isPremium()) {
         return fallback || (
@@ -63,7 +73,12 @@ export const PremiumContent = ({ children, fallback }) => {
 
 // Компонент для ограничения доступа к курсу
 export const CourseAccessGate = ({ course, children }) => {
-    const { canAccessCourse, isAuthenticated } = useAuth();
+    const { canAccessCourse, isAuthenticated, isDemoMode } = useAuth();
+
+    // В демо-режиме всегда предоставляем доступ
+    if (isDemoMode) {
+        return children;
+    }
 
     if (!isAuthenticated) {
         return (

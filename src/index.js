@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/variables.css';
-import './styles/global.css';
+import './styles/index.css';
 import App from './App';
 
-// Проверим, существует ли элемент с id="root"
+// Import i18n
+import './i18n';
+
+// Create root and render app
 const rootElement = document.getElementById('root');
-if (!rootElement) {
-    console.error('Failed to find the root element');
-} else {
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    );
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
 }
 
 

@@ -1,0 +1,286 @@
+.feedbackPage {
+  padding: 64px 0;
+}
+
+@media (max-width: 768px) {
+  .feedbackPage {
+    padding: 40px 0;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+.feedbackHeader {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #6b7280;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feedbackContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .feedbackContent {
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+.feedbackForm {
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.formGroup {
+  margin-bottom: 24px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.formHint {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.ratingContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.ratingButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background-color: #f8fafc;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease-in-out;
+  font-size: 18px;
+}
+
+.ratingButton:hover,
+.ratingButton.active {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  transform: scale(1.05);
+}
+
+.ratingButton.active {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: 6px;
+  font-weight: 500;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #1e40af;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  color: #dc2626;
+  padding: 12px;
+  background-color: rgba(220, 38, 38, 0.1);
+  border-radius: 6px;
+  margin-top: 16px;
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 48px 32px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.successMessage i {
+  font-size: 64px;
+  color: #10b981;
+}
+
+.successMessage h2 {
+  font-size: 24px;
+  color: #1f2937;
+}
+
+.successMessage p {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.newFeedbackButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: #2563eb;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #2563eb;
+  cursor: pointer;
+}
+
+.newFeedbackButton:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.feedbackAside {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.asideCard {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.asideCard h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+.asideCard p {
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.faqList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faqList li {
+  margin-bottom: 16px;
+}
+
+.faqList li:last-child {
+  margin-bottom: 0;
+}
+
+.faqList h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.faqList p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  background-color: #2563eb;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.contactLink:hover {
+  background-color: #1e40af;
+  color: #ffffff;
+} 

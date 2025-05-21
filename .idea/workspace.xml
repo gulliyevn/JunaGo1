@@ -5,42 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7908eaa1-3d4f-4856-817c-d66298e4bb01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/AchievementsCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CareerPathSelector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CourseProgressCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/LearningPathCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/UpcomingLessonsCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/ProtectedRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/contexts/AuthContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/ForgotPassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/ResetPassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Signup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/StudentDashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/UpgradePlan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Dashboard/AchievementsCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Dashboard/CareerPathSelector.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Dashboard/CourseProgressCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Dashboard/LearningPathCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Dashboard/UpcomingLessonsCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/ForgotPassword.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/ResetPassword.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Signup.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/StudentDashboard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/UpgradePlan.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Courses/FeaturedCourses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Courses/FeaturedCourses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Features/Features.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Features/Features.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Testimonials/Testimonials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Testimonials/Testimonials.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Chatbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Chatbot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Testimonials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Testimonials.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/courseData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/courseData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/coursesData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/coursesData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/themeContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/themeContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,23 +23,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "JavaScript Debug.index.html.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/gulliyevn/Desktop/JunaGo/src/styles",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/gulliyevn/Desktop/JunaGo/src/styles&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/styles" />
@@ -126,6 +91,9 @@
       <workItem from="1747502253489" duration="76000" />
       <workItem from="1747502344056" duration="3507000" />
       <workItem from="1747584314294" duration="6741000" />
+      <workItem from="1747591947323" duration="45000" />
+      <workItem from="1747599371683" duration="594000" />
+      <workItem from="1747660970617" duration="969000" />
     </task>
     <servers />
   </component>

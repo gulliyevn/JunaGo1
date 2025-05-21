@@ -7,11 +7,13 @@ import logoMainDark from '../../assets/logomaindark.png';
 import logoMainWhite from '../../assets/logomainwhite.svg';
 
 const Hero = () => {
-    const { darkMode } = useTheme();
-    const logoImage = darkMode ? logoMainWhite : logoMainDark;
+    const { theme } = useTheme();
+    
+    // Choose logo based on theme
+    const logoImage = theme === 'dark' ? logoMainWhite : logoMainDark;
 
     return (
-        <section className="hero-section">
+        <section className={`hero-section ${theme === 'dark' ? 'dark-hero' : 'light-hero'}`}>
             <div className="hero-container">
                 <div className="hero-content">
                     <div className="hero-text">

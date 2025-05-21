@@ -1,0 +1,706 @@
+.header {
+  background-color: var(--footer-background, #1a1a1a);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 0; /* Remove padding to reduce height */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header[data-theme="light"] {
+  background-color: var(--background-color, #f5f5f5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px; /* Doubled height from 35px to 70px */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo img {
+  max-height: 40px; /* Increased to fit the taller header */
+  width: auto;
+}
+
+.logoText {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color, #2563eb);
+  margin-left: 10px;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0 16px;
+}
+
+.navLink {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color, #f0f0f0);
+  text-decoration: none;
+  padding: 8px 0;
+  position: relative;
+  text-transform: capitalize;
+  transition: color 0.3s ease;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color, #98B5A4);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.navLink:hover::after,
+.navLinkActive::after {
+  width: 100%;
+}
+
+.navLink:hover,
+.mobileNavLink:hover,
+.navLinkActive,
+.mobileNavLinkActive {
+  color: var(--accent-color, #98B5A4);
+}
+
+.navLinkActive {
+  color: var(--accent-color, #98B5A4);
+}
+
+.navLinkActive::after {
+  width: 100%;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Theme Toggle - Styled as shown in the third image */
+.themeToggle {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  margin-right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.themeToggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-bg, #6cb984); /* Using CSS variable for theme support */
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--toggle-circle, white); /* Using CSS variable for theme support */
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.demoToggle {
+  margin-right: 16px;
+}
+
+.demoButton {
+  background-color: var(--secondary-color, #e2e8f0);
+  color: var(--text-secondary, #4a5568);
+  border: none;
+  border-radius: 16px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.demoActive {
+  background-color: var(--primary-color, #2563eb);
+  color: var(--bg-white, white);
+}
+
+.langSelector {
+  display: flex;
+  margin-right: 24px;
+}
+
+.langButton {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color, #f0f0f0);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.langButton:hover {
+  border-color: var(--accent-color, #98B5A4);
+  color: var(--accent-color, #98B5A4);
+}
+
+.langButtonActive,
+.langButton:hover {
+  color: var(--accent-color, #98B5A4);
+  border-color: var(--accent-color, #98B5A4);
+}
+
+/* Login Button - Styled as shown in the second image */
+.loginButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--text-color, white); /* Using CSS variable for theme support */
+  border-radius: 30px;
+  padding: 8px 24px; /* Increased padding */
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 2px solid var(--text-color, white); /* Using CSS variable for theme support */
+  text-decoration: none;
+  min-width: 100px; /* Increased width */
+  height: 42px; /* Increased height */
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.loginButton:hover {
+  background-color: var(--accent-color, rgba(255, 255, 255, 0.1)); /* Using CSS variable for theme support */
+  border-color: var(--accent-color, #98B5A4); /* Using CSS variable for theme support */
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.userInfo:hover {
+  transform: scale(1.05);
+}
+
+.userAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--primary-color, #3b82f6);
+}
+
+.userInitial {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color, #3b82f6);
+  color: var(--bg-white, white);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color, #f0f0f0);
+  margin-left: 8px;
+}
+
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconLink, .iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+}
+
+.iconButton {
+  color: var(--text-color, #f0f0f0);
+}
+
+.iconLink:hover, .iconButton:hover {
+  background-color: var(--accent-color, rgba(255, 255, 255, 0.1));
+}
+
+.navIcon {
+  font-size: 18px;
+  display: inline-flex;
+}
+
+.dashboardLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 8px;
+}
+
+.dashboardLink:hover {
+  text-decoration: underline;
+}
+
+.cartLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: relative;
+}
+
+.cartIcon {
+  font-size: 16px;
+  color: var(--text-color, #f0f0f0);
+}
+
+.cartLink:hover .cartIcon {
+  color: var(--accent-color, #98B5A4);
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logoutButton:hover {
+  color: var(--accent-color, #98B5A4);
+}
+
+/* Hamburger Menu Button - Styled as shown in the fourth image */
+.menuButton {
+  display: none;
+  background: var(--button-hover-bg, #f1f1f1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  width: 72px; /* Doubled from 36px */
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+}
+
+/* Menu Overlay */
+.menuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--shadow-color, rgba(0, 0, 0, 0.5));
+  z-index: 1000;
+}
+
+.hamburger {
+  display: block;
+  width: 20px;
+  height: 16px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--text-primary, #333);
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 7px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 14px;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 7px;
+  transform: rotate(135deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.open span:nth-child(3) {
+  top: 7px;
+  transform: rotate(-135deg);
+}
+
+/* Mobile Menu and Close Button */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%; /* Wider mobile menu */
+  height: 100vh;
+  background-color: var(--header-background, #121212);
+  z-index: 1001;
+  transition: right 0.3s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileMenu.open {
+  right: 0;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--button-hover-bg, #f1f1f1);
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1002;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 60px; /* Still larger than original but responsive for mobile */
+  }
+  
+  .navList {
+    display: none;
+  }
+  
+  .langSelector {
+    display: none;
+  }
+  
+  .userActions {
+    display: none;
+  }
+  
+  .menuButton {
+    display: flex;
+  }
+  
+  .menuOverlay {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    height: 55px; /* Smallest size but still larger than original */
+    padding: 0 12px;
+  }
+  
+  .logo img {
+    max-height: 32px; /* Adjusted for smaller header */
+  }
+  
+  .logoText {
+    display: none;
+  }
+  
+  .langSelector {
+    display: none;
+  }
+  
+  .loginButton {
+    padding: 6px 15px;
+  }
+  
+  .themeToggle, .demoToggle {
+    display: none;
+  }
+}
+
+/* Mobile Menu Styles */
+.mobileNav {
+  margin-top: 70px;
+  width: 100%;
+}
+
+.mobileNavList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.mobileNavItem {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.mobileNavLink {
+  font-size: 1.2rem;
+  color: var(--text-color, #f0f0f0);
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+.mobileNavLink:hover {
+  color: var(--accent-color, #98B5A4);
+}
+
+.mobileNavLinkActive {
+  color: var(--accent-color, #98B5A4);
+}
+
+@media (max-width: 768px) {
+  .navList {
+    display: none;
+  }
+  
+  .langSelector {
+    display: none;
+  }
+  
+  .userActions {
+    display: none;
+  }
+  
+  .menuButton {
+    display: flex;
+  }
+  
+  .menuOverlay {
+    display: block;
+  }
+}
+
+.iconSvg {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.cartLink:hover .iconSvg,
+.logoutButton:hover .iconSvg {
+  filter: brightness(0) saturate(100%) invert(75%) sepia(11%) saturate(641%) hue-rotate(96deg) brightness(84%) contrast(83%);
+}
+
+.header[data-theme="light"] .iconSvg {
+  filter: brightness(0);
+}
+
+.header[data-theme="light"] .cartLink:hover .iconSvg,
+.header[data-theme="light"] .logoutButton:hover .iconSvg {
+  filter: brightness(0) saturate(100%) invert(31%) sepia(44%) saturate(6226%) hue-rotate(204deg) brightness(98%) contrast(93%);
+}
+
+.cartLink,
+.logoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+  color: var(--text-color, #f0f0f0);
+}
+
+.cartLink:hover,
+.logoutButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--accent-color, #98B5A4);
+}
+
+.header[data-theme="light"] .cartLink,
+.header[data-theme="light"] .logoutButton {
+  color: var(--text-primary, #1f2937);
+}
+
+.header[data-theme="light"] .cartLink:hover,
+.header[data-theme="light"] .logoutButton:hover {
+  color: var(--primary-color, #2563eb);
+}
+
+.header[data-theme="light"] .navLink,
+.header[data-theme="light"] .navLinkActive,
+.header[data-theme="light"] .mobileNavLink,
+.header[data-theme="light"] .mobileNavLinkActive {
+  color: var(--text-primary, #1f2937);
+}
+
+.header[data-theme="light"] .navLink:hover,
+.header[data-theme="light"] .mobileNavLink:hover {
+  color: var(--primary-color, #2563eb);
+}
+
+.header[data-theme="light"] .navLinkActive,
+.header[data-theme="light"] .mobileNavLinkActive,
+.header[data-theme="light"] .navLink.active,
+.header[data-theme="light"] .mobileNavLink.active {
+  color: var(--primary-color, #2563eb);
+}
+
+.header[data-theme="light"] .loginButton {
+  color: var(--text-primary, #1f2937);
+  border-color: var(--text-primary, #1f2937);
+}
+
+.header[data-theme="light"] .loginButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--primary-color, #2563eb);
+  border-color: var(--primary-color, #2563eb);
+}
+
+.header[data-theme="light"] .langButton {
+  color: var(--text-primary, #1f2937);
+}
+
+.header[data-theme="light"] .langButton:hover,
+.header[data-theme="light"] .langButtonActive {
+  border-color: var(--primary-color, #2563eb);
+  color: var(--primary-color, #2563eb);
+}
+
+.header[data-theme="light"] .demoButton {
+  background-color: var(--bg-gray, #e2e8f0);
+  color: var(--text-primary, #1f2937);
+}
+
+.header[data-theme="light"] .demoActive {
+  background-color: var(--primary-color, #2563eb);
+  color: white;
+}
+
+.header[data-theme="light"] .userInitial {
+  background-color: var(--primary-color, #2563eb);
+}
+
+.header[data-theme="light"] .userName {
+  color: var(--text-primary, #1f2937);
+}
+
+.header[data-theme="light"] .hamburger span {
+  background-color: var(--text-primary, #1f2937);
+}
+
+.header[data-theme="light"] .closeButton {
+  color: var(--text-primary, #1f2937);
+}
+
+/* Также обеспечим корректное отображение текста в мобильном меню в светлой теме */
+.header[data-theme="light"] .mobileMenu {
+  background-color: var(--bg-white, #ffffff);
+} 

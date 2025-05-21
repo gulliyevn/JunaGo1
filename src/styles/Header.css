@@ -1,20 +1,33 @@
 /* src/styles/Header.css */
 .header {
     width: 100%;
-    background-color: var(--header-background);
-    box-shadow: 0 2px 4px var(--shadow-color);
-    position: relative;
+    background-color: #121212; /* Darker gray background */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light header specific styles */
+.light-header {
+    background-color: #121212; /* Same as dark for consistency */
+}
+
+/* Dark header specific styles */
+.dark-header {
+    background-color: #121212;
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 92%;
-    height: 58px;
+    width: 100%;
+    height: 35px; /* Reduced height as requested */
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 1200px;
+    padding: 0 20px;
 }
 
 .logo {
@@ -23,7 +36,7 @@
 }
 
 .logo-container {
-    width: 120px;
+    width: 80px; /* Reduced from 100px */
     display: flex;
     align-items: center;
 }
@@ -42,7 +55,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 4vw;
+    gap: 1.5rem;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -53,71 +66,90 @@
 }
 
 .nav-link {
-    font-size: 1.25rem;
-    color: var(--text-color);
+    font-size: 0.9rem;
+    color: #f0f0f0; /* Always light text on dark background */
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .nav-link:hover {
-    color: var(--primary-color);
+    color: #98B5A4;
 }
 
 .header-controls {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
-/* Theme Toggle */
+/* Theme Toggle - Styled as shown in the third image */
 .toggle-container {
     position: relative;
     display: inline-block;
     width: 48px;
-    margin-right: 8px;
+    height: 24px;
+    margin-right: 5px;
 }
 
 .toggle-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
     position: absolute;
-    display: block;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 4px solid var(--toggle-bg);
-    appearance: none;
-    cursor: pointer;
-    background-color: var(--toggle-circle);
-    transition: transform 0.3s ease;
-    z-index: 2;
-    top: 0;
-}
-
-.toggle-checkbox:checked {
-    transform: translateX(24px);
 }
 
 .toggle-label {
-    display: block;
-    overflow: hidden;
-    height: 24px;
-    border-radius: 9999px;
-    background-color: var(--toggle-bg);
+    position: absolute;
     cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #6cb984;
+    transition: .4s;
+    border-radius: 34px;
 }
 
-/* Hamburger Menu Button */
+.toggle-label:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #6cb984;
+}
+
+.toggle-checkbox:checked + .toggle-label:before {
+    transform: translateX(24px);
+}
+
+/* Hamburger Menu Button - Styled as shown in the fourth image */
 .menu-button {
     display: none;
-    background: none;
+    background: #f1f1f1;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-    padding: 5px;
+    padding: 8px;
+    width: 72px; /* Doubled from 36px */
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 1002;
 }
 
 .hamburger {
     display: block;
-    width: 25px;
-    height: 20px;
+    width: 20px;
+    height: 16px;
     position: relative;
     transform: rotate(0deg);
     transition: .5s ease-in-out;
@@ -126,9 +158,9 @@
 .hamburger span {
     display: block;
     position: absolute;
-    height: 3px;
+    height: 2px;
     width: 100%;
-    background: var(--text-color);
+    background: #333;
     border-radius: 9px;
     opacity: 1;
     left: 0;
@@ -141,15 +173,15 @@
 }
 
 .hamburger span:nth-child(2) {
-    top: 8px;
+    top: 7px;
 }
 
 .hamburger span:nth-child(3) {
-    top: 16px;
+    top: 14px;
 }
 
 .hamburger.open span:nth-child(1) {
-    top: 8px;
+    top: 7px;
     transform: rotate(135deg);
 }
 
@@ -159,7 +191,7 @@
 }
 
 .hamburger.open span:nth-child(3) {
-    top: 8px;
+    top: 7px;
     transform: rotate(-135deg);
 }
 
@@ -168,61 +200,147 @@
     display: none;
 }
 
+/* Mobile Menu and Close Button */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%; /* Wider mobile menu */
+    height: 100vh;
+    background-color: #121212;
+    z-index: 1001;
+    transition: right 0.3s ease;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobileMenu.open {
+    right: 0;
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1002;
+}
+
+/* Mobile Menu Styles */
+.mobileNav {
+    margin-top: 70px;
+    width: 100%;
+}
+
+.mobileNavList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.mobileNavItem {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.mobileNavLink {
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.mobileNavLink:hover {
+    color: #98B5A4;
+}
+
+.mobileNavLinkActive {
+    color: #98B5A4;
+}
+
 /* Menu Overlay */
 .menu-overlay {
     display: none;
 }
 
-/* Desktop Login Styles */
+/* Desktop Login Styles - Styled as shown in the second image */
 .login-container {
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .login-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #162A2C;
-    color: white;
-    border-radius: 20px;
-    padding: 6px 16px;
+    background-color: transparent;
+    color: var(--text-color, white);
+    border-radius: 30px;
+    padding: 8px 24px;
     font-weight: 500;
     transition: all 0.2s ease;
-    border: none;
+    border: 2px solid var(--text-color, white);
     text-decoration: none;
-    min-width: 80px;
-    height: 36px;
+    min-width: 100px;
+    height: 42px;
+    font-size: 0.9rem;
 }
 
 .login-button:hover {
-    background-color: #294548;
-    color: #D6E0E2;
+    background-color: var(--accent-color, rgba(255, 255, 255, 0.1));
+    border-color: var(--accent-color, #98B5A4);
 }
 
 .user-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .avatar {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #3b82f6;
+    border: 1px solid #3b82f6;
 }
 
 .logout-button {
-    background: transparent;
-    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--text-color, white);
+    border-radius: 30px;
+    padding: 6px 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 2px solid var(--text-color, white);
     cursor: pointer;
-    padding: 4px;
+    min-width: 42px;
+    height: 42px;
+}
+
+.logout-button:hover {
+    background-color: var(--accent-color, rgba(255, 255, 255, 0.1));
+    border-color: var(--accent-color, #98B5A4);
 }
 
 .logout-button img {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     opacity: 0.8;
     transition: opacity 0.2s ease;
 }
@@ -231,39 +349,50 @@
     opacity: 1;
 }
 
-/* Mobile Responsive Styles */
+/* Mobile Styles */
+@media (max-width: 992px) {
+    .nav {
+        height: 35px;
+    }
+
+    .nav-links ul {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav {
-        padding: 0 1rem;
-        max-width: 100%;
-        width: 100%;
+        height: 35px;
+        padding: 0 15px;
     }
 
     .menu-button {
-        display: block;
+        display: flex;
     }
 
     .header-controls .login-container,
     .header-controls .toggle-container,
-    .header-controls .language-selector {
+    .header-controls > div:not(.menu-button) {
         display: none;
     }
 
     .nav-links {
         position: fixed;
-        top: 58px;
+        top: 0;
         right: -100%;
-        width: 300px;
-        height: calc(100vh - 58px);
-        background-color: var(--header-background);
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        padding: 2rem 1.5rem;
+        background-color: var(--card-background);
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
-        padding: 2rem 1rem;
-        box-shadow: -2px 0 10px var(--shadow-color);
         transition: right 0.3s ease;
         z-index: 1001;
-        overflow-y: auto;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .nav-links.open {
@@ -272,41 +401,61 @@
 
     .nav-links ul {
         flex-direction: column;
-        gap: 1rem;
+        align-items: flex-start;
         width: 100%;
         margin-bottom: 2rem;
     }
 
     .nav-item {
         width: 100%;
+        margin-bottom: 1rem;
     }
 
     .nav-link {
-        display: block;
-        padding: 1rem 0;
-        border-bottom: 1px solid var(--border-color);
-        font-size: 1.125rem;
-    }
-
-    .mobile-user-section {
+        font-size: 1rem;
         display: block;
         width: 100%;
-        border-top: 1px solid var(--border-color);
-        padding-top: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    /* Mobile User Section */
+    .mobile-user-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: auto;
     }
 
     .mobile-login-container {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .mobile-login-button {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 1rem 0;
-        color: var(--text-color);
+        justify-content: center;
+        gap: 0.5rem;
+        background-color: transparent;
+        color: var(--text-color, white);
+        border-radius: 30px;
+        padding: 8px 24px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border: 2px solid var(--text-color, white);
         text-decoration: none;
-        font-size: 1.125rem;
+        width: 100%;
+        height: 42px;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .mobile-login-button:hover {
+        background-color: var(--accent-color, rgba(255, 255, 255, 0.1));
+        border-color: var(--accent-color, #98B5A4);
+    }
+
+    .mobile-login-button i {
+        font-size: 1.2rem;
     }
 
     .mobile-user-controls {
@@ -315,127 +464,165 @@
         gap: 1rem;
     }
 
-    .mobile-user-controls a,
-    .mobile-logout-button {
+    .mobile-user-controls a {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 1rem 0;
+        gap: 0.5rem;
         color: var(--text-color);
         text-decoration: none;
-        background: none;
-        border: none;
-        font-size: 1.125rem;
-        cursor: pointer;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+        font-weight: 500;
         width: 100%;
         text-align: left;
     }
-
-    .mobile-avatar {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        object-fit: cover;
+    
+    .mobile-logout-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background-color: transparent;
+        color: var(--text-color, white);
+        border-radius: 30px;
+        padding: 8px 24px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border: 2px solid var(--text-color, white);
+        cursor: pointer;
+        width: 100%;
+        height: 42px;
+        font-size: 0.9rem;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    .mobile-logout-button:hover {
+        background-color: var(--accent-color, rgba(255, 255, 255, 0.1));
+        border-color: var(--accent-color, #98B5A4);
     }
 
+    .mobile-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #3b82f6;
+    }
+
+    /* Mobile Theme Toggle */
     .mobile-theme-toggle {
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 1rem;
         margin-bottom: 1rem;
+        display: flex;
+        width: 100%;
     }
 
     .mobile-theme-toggle label {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        cursor: pointer;
-        padding: 1rem 0;
-        font-size: 1.125rem;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 0;
         color: var(--text-color);
+        font-weight: 500;
+        position: relative;
     }
 
     .mobile-toggle-checkbox {
-        display: none;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        position: absolute;
     }
 
     .mobile-toggle-slider {
         position: relative;
-        width: 50px;
+        display: inline-block;
+        width: 48px;
         height: 24px;
-        background-color: var(--border-color);
-        border-radius: 12px;
-        transition: background-color 0.3s;
+        background-color: #6cb984;
+        border-radius: 34px;
+        transition: background-color 0.4s;
     }
 
     .mobile-toggle-slider::before {
-        content: '';
         position: absolute;
-        top: 2px;
-        left: 2px;
-        width: 20px;
+        content: "";
         height: 20px;
+        width: 20px;
+        left: 2px;
+        bottom: 2px;
         background-color: white;
         border-radius: 50%;
-        transition: transform 0.3s;
+        transition: transform 0.4s;
     }
 
     .mobile-toggle-checkbox:checked + .mobile-toggle-slider {
-        background-color: var(--primary-color);
+        background-color: #6cb984;
     }
 
     .mobile-toggle-checkbox:checked + .mobile-toggle-slider::before {
-        transform: translateX(26px);
+        transform: translateX(24px);
     }
 
     .mobile-language-selector {
         display: flex;
-        justify-content: center;
-        padding-top: 1rem;
+        width: 100%;
+        margin-bottom: 1rem;
     }
 
+    /* Menu Overlay */
     .menu-overlay {
         display: block;
         position: fixed;
-        top: 58px;
+        top: 0;
         left: 0;
         width: 100%;
-        height: calc(100vh - 58px);
+        height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 1000;
     }
+
+    .logo-container {
+        width: 70px;
+    }
 }
 
-/* Very small screens */
 @media (max-width: 480px) {
+    .nav {
+        padding: 0 10px;
+    }
+
     .nav-links {
-        width: 100%;
-        right: -100%;
+        width: 85%;
     }
 
     .nav-links.open {
-        right: 0;
+        padding: 1.5rem 1rem;
+    }
+
+    .logo-container {
+        width: 65px;
     }
 }
 
-/* Dark mode adjustments */
-[data-theme="dark"] .nav-links {
-    background-color: var(--header-background);
+/* Dark mode specifics */
+.nav-links {
+    background-color: #1a1a1a;
 }
 
-[data-theme="dark"] .nav-link {
-    color: var(--text-color);
+.nav-link {
+    color: #f0f0f0;
 }
 
-[data-theme="dark"] .mobile-login-button,
-[data-theme="dark"] .mobile-user-controls a,
-[data-theme="dark"] .mobile-logout-button {
-    color: var(--text-color);
+.mobile-user-controls a {
+    color: #f0f0f0;
 }
 
-[data-theme="dark"] .hamburger span {
-    background: var(--text-color);
+.hamburger span {
+    background: #333;
 }
 
-[data-theme="dark"] .mobile-toggle-slider::before {
-    background-color: var(--text-color);
+.mobile-toggle-slider::before {
+    background-color: white;
 }

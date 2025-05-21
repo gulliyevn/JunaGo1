@@ -6,6 +6,74 @@
     background: linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to));
 }
 
+/* Dark hero version with fixed dark colors */
+.dark-hero {
+    background: linear-gradient(to bottom right, #162A2C, #0a1718);
+}
+
+.dark-hero .hero-title,
+.dark-hero .hero-subtitle,
+.dark-hero .hero-button-secondary {
+    color: #f0f0f0;
+}
+
+.dark-hero .hero-title-accent {
+    color: #60a5fa;
+}
+
+.dark-hero .hero-button {
+    background-color: #98B5A4;
+    color: #ffffff;
+}
+
+.dark-hero .hero-button-secondary {
+    background-color: transparent;
+    border: 2px solid #98B5A4;
+}
+
+.dark-hero .hero-button:hover {
+    background-color: #a9c6b5;
+}
+
+.dark-hero .hero-button-secondary:hover {
+    background-color: #98B5A4;
+    color: #ffffff;
+}
+
+/* Light hero version with light theme colors */
+.light-hero {
+    background: linear-gradient(to bottom right, #D6E0E2, #686867);
+}
+
+.light-hero .hero-title,
+.light-hero .hero-subtitle {
+    color: #333333;
+}
+
+.light-hero .hero-title-accent {
+    color: #162A2C;
+}
+
+.light-hero .hero-button {
+    background-color: #162A2C;
+    color: #D6E0E2;
+}
+
+.light-hero .hero-button-secondary {
+    background-color: transparent;
+    color: #333333;
+    border: 2px solid #162A2C;
+}
+
+.light-hero .hero-button:hover {
+    background-color: #273f42;
+}
+
+.light-hero .hero-button-secondary:hover {
+    background-color: #162A2C;
+    color: #D6E0E2;
+}
+
 .hero-container {
     margin: auto 0;
     padding: 2rem 0;

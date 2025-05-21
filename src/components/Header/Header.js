@@ -10,15 +10,15 @@ import logoDark from '../../assets/logowhite1.png'; // Light logo for dark mode
 import logoWhite from '../../assets/logonew.png'; // Dark logo for light mode
 
 const Header = () => {
-    const { darkMode, toggleTheme } = useTheme();
+    const { theme, darkMode, toggleTheme } = useTheme();
     const [menuOpen, setMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("authToken"));
     const [userData, setUserData] = useState(
         JSON.parse(localStorage.getItem("user")) || null
     );
 
-    // Select the appropriate logo based on the theme
-    const logoImage = darkMode ? logoWhite : logoDark;
+    // We'll use the white logo always since we have a dark header
+    const logoImage = logoWhite;
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -97,12 +97,10 @@ const Header = () => {
 
                         {/* Mobile Theme Toggle */}
                         <div className="mobile-theme-toggle">
-                            <label htmlFor="mobile-darkMode">
-                                <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
+                            <label>
+                                <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
                                 <input
                                     type="checkbox"
-                                    name="mobile-darkMode"
-                                    id="mobile-darkMode"
                                     className="mobile-toggle-checkbox"
                                     checked={darkMode}
                                     onChange={toggleTheme}
@@ -146,7 +144,6 @@ const Header = () => {
                     <div className="toggle-container">
                         <input
                             type="checkbox"
-                            name="darkMode"
                             id="darkMode"
                             className="toggle-checkbox"
                             checked={darkMode}
@@ -155,7 +152,7 @@ const Header = () => {
                         <label htmlFor="darkMode" className="toggle-label"></label>
                     </div>
 
-                    <button className="menu-button" onClick={toggleMenu}>
+                    <button className="menu-button" onClick={toggleMenu} aria-label="Toggle menu">
                         <span className={`hamburger ${menuOpen ? 'open' : ''}`}>
                             <span></span>
                             <span></span>
