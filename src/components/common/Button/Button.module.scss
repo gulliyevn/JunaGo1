@@ -1,17 +1,60 @@
+/* CSS-переменные для управления темами кнопок */
+:root {
+  --btn-primary-bg: #2F3E46;
+  --btn-primary-text: #FFFFFF;
+  --btn-primary-hover-bg: #E5E7EB;
+  --btn-primary-hover-text: #1F2937;
+  --btn-primary-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: #2F3E46;
+  --btn-secondary-border: #2F3E46;
+  --btn-secondary-hover-bg: #2F3E46;
+  --btn-secondary-hover-text: #FFFFFF;
+  
+  --btn-disabled-opacity: 0.5;
+  --btn-focus-outline: 2px solid #4F46E5;
+  --btn-border-radius: 50px;
+  --btn-transition: all 0.2s ease;
+}
+
+/* Настройки для темной темы */
+[data-theme="dark"] {
+  --btn-primary-bg: #A8B5A0;
+  --btn-primary-text: #1F2937;
+  --btn-primary-hover-bg: #F3F4F6;
+  --btn-primary-hover-text: #1F2937;
+  --btn-primary-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: #FFFFFF;
+  --btn-secondary-border: #FFFFFF;
+  --btn-secondary-hover-bg: #FFFFFF;
+  --btn-secondary-hover-text: #1F2937;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
   font-weight: 500;
+  border-radius: var(--btn-border-radius);
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  border: none;
+  transition: var(--btn-transition);
   outline: none;
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: var(--btn-disabled-opacity);
+  }
+
+  &:focus-visible {
+    outline: var(--btn-focus-outline);
+    outline-offset: 2px;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0px) scale(0.98);
   }
 
   &.fullWidth {
@@ -19,53 +62,63 @@
   }
 }
 
-// Variants
+/* Основные варианты кнопок */
 .primary {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  padding: 12px 32px;
 
   &:hover:not(:disabled) {
-    background-color: #0056b3;
+    background-color: var(--btn-primary-hover-bg);
+    color: var(--btn-primary-hover-text);
+    transform: translateY(-1px);
+    box-shadow: var(--btn-primary-shadow);
   }
 }
 
 .secondary {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
+  padding: 10px 30px;
 
   &:hover:not(:disabled) {
-    background-color: #545b62;
+    background-color: var(--btn-secondary-hover-bg);
+    color: var(--btn-secondary-hover-text);
+    transform: translateY(-1px);
   }
 }
 
 .outline {
   background-color: transparent;
-  border: 1px solid #007bff;
-  color: #007bff;
+  border: 2px solid var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  padding: 10px 30px;
 
   &:hover:not(:disabled) {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
   }
 }
 
-// Sizes
+/* Размеры кнопок */
 .small {
-  padding: 8px 16px;
+  padding: 8px 24px;
   font-size: 14px;
 }
 
 .medium {
-  padding: 12px 24px;
+  padding: 12px 32px;
   font-size: 16px;
 }
 
 .large {
-  padding: 16px 32px;
+  padding: 16px 40px;
   font-size: 18px;
 }
 
-// Loading state
+/* Состояние загрузки */
 .loading {
   position: relative;
   color: transparent;

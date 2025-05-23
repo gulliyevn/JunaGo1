@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ProjectHeader.module.scss';
 import { useAuth } from '../../../contexts/AuthContext';
+import { Button } from '../../../components/common/Button/Button';
 
 interface ProjectHeaderProps {
   user: any;
@@ -20,11 +21,16 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerBackground}>
-        <button className={styles.editButton}>
+        <Button 
+          variant="secondary" 
+          size="small" 
+          className={styles.editButton}
+          aria-label="Edit profile"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" className={styles.editIcon} viewBox="0 0 20 20" fill="currentColor">
             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
           </svg>
-        </button>
+        </Button>
       </div>
       <div className={styles.headerContent}>
         <div className={styles.avatarContainer}>
@@ -59,15 +65,15 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({
             </div>
           </div>
           <div className={styles.actions}>
-            <button className={styles.primaryButton}>
+            <Button variant="primary" size="medium" className={styles.primaryButton}>
               <i className="fas fa-plus"></i> Connect
-            </button>
-            <button className={styles.secondaryButton}>
+            </Button>
+            <Button variant="secondary" size="medium" className={styles.secondaryButton}>
               <i className="fas fa-envelope"></i> Message
-            </button>
-            <button className={styles.secondaryButton}>
+            </Button>
+            <Button variant="secondary" size="small" className={styles.secondaryButton}>
               <i className="fas fa-ellipsis-h"></i>
-            </button>
+            </Button>
           </div>
         </div>
         

@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import { Project } from '../../../types/Project';
+import { Button } from '../../../components/common/Button/Button';
 import styles from './ProjectList.module.scss';
 
 interface ProjectListProps {
@@ -28,9 +29,13 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects, isLoading }) => {
         <p className={styles.emptyMessage}>
           Start creating a new project or adjust your search criteria.
         </p>
-        <button className={styles.newProjectButton}>
+        <Button 
+          variant="primary"
+          size="medium"
+          className={styles.newProjectButton}
+        >
           <i className="fas fa-plus"></i> Create New Project
-        </button>
+        </Button>
       </div>
     );
   }

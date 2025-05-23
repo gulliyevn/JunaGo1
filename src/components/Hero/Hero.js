@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../utils/themeContext';
+import { Button } from '../common/Button/Button';
 import '../../styles/Hero.css';
 import logoMainDark from '../../assets/logomaindark.png';
 import logoMainWhite from '../../assets/logomainwhite.svg';
@@ -13,7 +14,7 @@ const Hero = () => {
     const logoImage = theme === 'dark' ? logoMainWhite : logoMainDark;
 
     return (
-        <section className={`hero-section ${theme === 'dark' ? 'dark-hero' : 'light-hero'}`}>
+        <section className={`hero-section ${theme === 'dark' ? 'dark-hero' : 'light-hero'}`} data-theme={theme}>
             <div className="hero-container">
                 <div className="hero-content">
                     <div className="hero-text">
@@ -24,12 +25,24 @@ const Hero = () => {
                             Your new assistant Juna AI
                         </p>
                         <div className="hero-buttons">
-                            <Link to="/pricing" className="hero-button">
+                            <Button 
+                                as={Link} 
+                                to="/pricing" 
+                                variant="primary" 
+                                size="medium" 
+                                className="hero-button"
+                            >
                                 Subscribe now
-                            </Link>
-                            <Link to="/courses" className="hero-button hero-button-secondary">
+                            </Button>
+                            <Button 
+                                as={Link} 
+                                to="/courses" 
+                                variant="secondary" 
+                                size="medium" 
+                                className="hero-button hero-button-secondary"
+                            >
                                 Explore Courses
-                            </Link>
+                            </Button>
                         </div>
                     </div>
                     <div className="hero-image">

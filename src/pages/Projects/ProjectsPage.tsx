@@ -7,6 +7,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { ProjectService } from '../../services/ProjectService';
 import { Project } from '../../types/Project';
 import styles from './ProjectsPage.module.scss';
+import { Button } from '../../components/common/Button/Button';
 
 const ProjectsPage: React.FC = () => {
   const { user } = useAuth();
@@ -112,30 +113,38 @@ const ProjectsPage: React.FC = () => {
           <div className={styles.mainContent}>
             <div className={styles.filtersContainer}>
               <div className={styles.filterButtons}>
-                <button 
-                  className={`${styles.filterButton} ${filter === 'all' ? styles.active : ''}`}
+                <Button 
+                  variant={filter === 'all' ? 'primary' : 'secondary'}
+                  size="small"
+                  className={styles.filterButton}
                   onClick={() => handleFilterChange('all')}
                 >
                   <i className="fas fa-border-all"></i> All
-                </button>
-                <button 
-                  className={`${styles.filterButton} ${filter === 'starred' ? styles.active : ''}`}
+                </Button>
+                <Button 
+                  variant={filter === 'starred' ? 'primary' : 'secondary'}
+                  size="small"
+                  className={styles.filterButton}
                   onClick={() => handleFilterChange('starred')}
                 >
                   <i className="fas fa-star"></i> Starred
-                </button>
-                <button 
-                  className={`${styles.filterButton} ${filter === 'active' ? styles.active : ''}`}
+                </Button>
+                <Button 
+                  variant={filter === 'active' ? 'primary' : 'secondary'}
+                  size="small"
+                  className={styles.filterButton}
                   onClick={() => handleFilterChange('active')}
                 >
                   <i className="fas fa-code"></i> Active
-                </button>
-                <button 
-                  className={`${styles.filterButton} ${filter === 'archived' ? styles.active : ''}`}
+                </Button>
+                <Button 
+                  variant={filter === 'archived' ? 'primary' : 'secondary'}
+                  size="small"
+                  className={styles.filterButton}
                   onClick={() => handleFilterChange('archived')}
                 >
                   <i className="fas fa-archive"></i> Archived
-                </button>
+                </Button>
               </div>
               
               <div className={styles.sortContainer}>

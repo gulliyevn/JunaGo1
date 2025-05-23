@@ -12,32 +12,12 @@
 }
 
 .dark-hero .hero-title,
-.dark-hero .hero-subtitle,
-.dark-hero .hero-button-secondary {
+.dark-hero .hero-subtitle {
     color: #f0f0f0;
 }
 
 .dark-hero .hero-title-accent {
     color: #60a5fa;
-}
-
-.dark-hero .hero-button {
-    background-color: #98B5A4;
-    color: #ffffff;
-}
-
-.dark-hero .hero-button-secondary {
-    background-color: transparent;
-    border: 2px solid #98B5A4;
-}
-
-.dark-hero .hero-button:hover {
-    background-color: #a9c6b5;
-}
-
-.dark-hero .hero-button-secondary:hover {
-    background-color: #98B5A4;
-    color: #ffffff;
 }
 
 /* Light hero version with light theme colors */
@@ -52,26 +32,6 @@
 
 .light-hero .hero-title-accent {
     color: #162A2C;
-}
-
-.light-hero .hero-button {
-    background-color: #162A2C;
-    color: #D6E0E2;
-}
-
-.light-hero .hero-button-secondary {
-    background-color: transparent;
-    color: #333333;
-    border: 2px solid #162A2C;
-}
-
-.light-hero .hero-button:hover {
-    background-color: #273f42;
-}
-
-.light-hero .hero-button-secondary:hover {
-    background-color: #162A2C;
-    color: #D6E0E2;
 }
 
 .hero-container {
@@ -120,37 +80,10 @@
     flex-wrap: wrap;
 }
 
+/* Кнопки используют глобальные стили, определенные в index.css */
 .hero-button {
-    display: inline-block;
     min-width: 180px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    border-radius: 9999px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.hero-button {
-    background-color: var(--primary-color);
-    color: var(--button-text-color);
-}
-
-.hero-button-secondary {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 2px solid var(--primary-color);
-}
-
-.hero-button:hover {
-    color: var(--button-hover-text);
-    background-color: var(--button-hover-bg);
-    transform: translateY(-2px);
-}
-
-.hero-button-secondary:hover {
-    background-color: var(--primary-color);
-    color: var(--button-text-color);
+    text-decoration: none;
 }
 
 .hero-image {

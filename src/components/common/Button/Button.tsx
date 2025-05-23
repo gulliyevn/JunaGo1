@@ -1,14 +1,19 @@
 import React from 'react';
+import { useTheme } from '../../../utils/themeContext';
 import styles from './Button.module.scss';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonOwnProps<E extends React.ElementType = React.ElementType> = {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'small' | 'medium' | 'large';
   isLoading?: boolean;
   fullWidth?: boolean;
-}
+  as?: E;
+};
 
-export const Button: React.FC<ButtonProps> = ({
+type ButtonProps<E extends React.ElementType> = ButtonOwnProps<E> &
+  Omit<React.ComponentProps<E>, keyof ButtonOwnProps>;
+
+export const Button = <E extends React.ElementType = 'button'>({
   children,
   variant = 'primary',
   size = 'medium',
@@ -16,8 +21,12 @@ export const Button: React.FC<ButtonProps> = ({
   fullWidth = false,
   className,
   disabled,
+  as,
   ...props
-}) => {
+}: ButtonProps<E>) => {
+  const { theme } = useTheme();
+  const Component = as || 'button';
+  
   const buttonClasses = [
     styles.button,
     styles[variant],
@@ -30,16 +39,17 @@ export const Button: React.FC<ButtonProps> = ({
     .join(' ');
 
   return (
-    <button
+    <Component
       className={buttonClasses}
       disabled={disabled || isLoading}
+      data-theme={theme}
       {...props}
     >
       {isLoading ? (
-        <span className={styles.spinner} />
+        <span className={styles.spinner} aria-hidden="true" />
       ) : (
         children
       )}
-    </button>
+    </Component>
   );
 }; 

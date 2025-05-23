@@ -38,6 +38,24 @@ html, body {
   --footer-background: #1a1a1a;
   --accent-color: #98B5A4;
   --button-hover-bg: #f1f1f1;
+  
+  /* Button variables */
+  --btn-primary-bg: #2F3E46;
+  --btn-primary-text: #FFFFFF;
+  --btn-primary-hover-bg: #E5E7EB;
+  --btn-primary-hover-text: #1F2937;
+  --btn-primary-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: #2F3E46;
+  --btn-secondary-border: #2F3E46;
+  --btn-secondary-hover-bg: #2F3E46;
+  --btn-secondary-hover-text: #FFFFFF;
+  
+  --btn-disabled-opacity: 0.5;
+  --btn-focus-outline: 2px solid #4F46E5;
+  --btn-border-radius: 50px;
+  --btn-transition: all 0.2s ease;
 }
 
 * {
@@ -60,6 +78,7 @@ a {
 
 button {
   cursor: pointer;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .container {
@@ -75,7 +94,7 @@ button {
 }
 
 /* Dark mode */
-.dark-theme {
+.dark-theme, [data-theme="dark"] {
   --bg-white: #1f2937;
   --bg-light: #111827;
   --bg-gray: #374151;
@@ -94,6 +113,69 @@ button {
   --accent-color: #98B5A4;
   --button-hover-bg: #333333;
   
+  /* Button variables */
+  --btn-primary-bg: #A8B5A0;
+  --btn-primary-text: #1F2937;
+  --btn-primary-hover-bg: #F3F4F6;
+  --btn-primary-hover-text: #1F2937;
+  --btn-primary-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: #FFFFFF;
+  --btn-secondary-border: #FFFFFF;
+  --btn-secondary-hover-bg: #FFFFFF;
+  --btn-secondary-hover-text: #1F2937;
+  
   background-color: var(--bg-dark);
   color: var(--text-primary);
+} 
+
+/* Глобальные стили для кнопок (фолбеки) */
+.btn, 
+.button, 
+button[type="submit"], 
+button[type="button"]:not([class]),
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: var(--btn-border-radius);
+  font-weight: 500;
+  border: none;
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  transition: var(--btn-transition);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.btn:hover, 
+.button:hover, 
+button[type="submit"]:hover, 
+button[type="button"]:not([class]):hover,
+.hero-button:hover {
+  background-color: var(--btn-primary-hover-bg);
+  color: var(--btn-primary-hover-text);
+  transform: translateY(-1px);
+  box-shadow: var(--btn-primary-shadow);
+}
+
+.btn-secondary, 
+.button-secondary, 
+.secondary-button,
+.hero-button-secondary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
+  padding: 10px 30px;
+}
+
+.btn-secondary:hover, 
+.button-secondary:hover, 
+.secondary-button:hover,
+.hero-button-secondary:hover {
+  background-color: var(--btn-secondary-hover-bg);
+  color: var(--btn-secondary-hover-text);
+  transform: translateY(-1px);
 } 
