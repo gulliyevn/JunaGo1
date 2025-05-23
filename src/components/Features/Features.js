@@ -1,8 +1,11 @@
 // src/components/Features/Features.js
 import React from 'react';
+import { useTheme } from '../../utils/themeContext';
 import '../../styles/Features.css';
 
 const Features = () => {
+    const { theme } = useTheme();
+    
     const features = [
         {
             id: 1,
@@ -20,7 +23,7 @@ const Features = () => {
             id: 3,
             icon: 'fas fa-certificate',
             title: 'Certificates',
-            description: 'Receive klmxnslax certificate upon completion that is highly valued by employers.'
+            description: 'Receive a certificate upon completion that is highly valued by employers.'
         },
         {
             id: 4,
@@ -43,7 +46,7 @@ const Features = () => {
     ];
 
     return (
-        <section className="features-section">
+        <section className="features-section" data-theme={theme}>
             <div className="features-container">
                 <h2 className="features-heading">Why Choose Us</h2>
                 <p className="features-subheading">
@@ -53,10 +56,10 @@ const Features = () => {
                 <div className="features-grid">
                     {features.map(feature => (
                         <div className="feature-card" key={feature.id}>
-                            <div className="feature-inner">
+                            <div className="feature-inner" tabIndex="0">
                                 <div className="feature-icon-wrapper">
                                     <span className="feature-icon">
-                                        <i className={feature.icon}></i>
+                                        <i className={feature.icon} aria-hidden="true"></i>
                                     </span>
                                 </div>
                                 <h3 className="feature-title">{feature.title}</h3>
