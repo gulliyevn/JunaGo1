@@ -1,228 +1,490 @@
-# JunaGO - Educational Platform
+# 🎓 JunaGO - Современная Образовательная Платформа
 
-## Project Architecture
+> Комплексная образовательная платформа на React с интегрированной рабочей областью для кода, многоязычной поддержкой и продвинутыми UI компонентами.
 
-JunaGO is a modern React-based educational platform built with a clean architecture that separates concerns and promotes maintainability.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![React](https://img.shields.io/badge/React-19.1.0-blue.svg)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue.svg)](https://www.typescriptlang.org/)
 
-## 📋 Architecture Overview
+## 📑 Содержание
 
-```
-JunaGO
-├── 📁 src/                      # Source code
-│   ├── 📁 assets/              # Static assets like images, icons
-│   ├── 📁 components/          # Reusable UI components
-│   │   ├── 📁 common/          # Shared components (buttons, inputs, etc.)
-│   │   ├── 📁 layout/          # Layout components (header, footer)
-│   │   ├── 📁 Feature/         # Feature-specific components
-│   ├── 📁 contexts/            # React contexts for state management
-│   ├── 📁 hooks/               # Custom React hooks
-│   ├── 📁 pages/               # Page components
-│   ├── 📁 services/            # API services and data providers
-│   ├── 📁 styles/              # Global styles and CSS modules
-│   ├── 📁 utils/               # Utility functions
-│   ├── 📁 i18n/                # Internationalization
-│   ├── 📁 types/               # TypeScript type definitions
-│   ├── 📁 store/               # State management
-│   ├── 📁 features/            # Feature-specific code
-│   ├── 📁 config/              # Configuration files
-│   ├── 📁 constants/           # Constants and enums
-│   ├── 📄 App.js               # Main application component
-│   └── 📄 index.js             # Application entry point
-├── 📁 public/                   # Public assets
-│   ├── 📁 assets/              # Public static assets
-│   └── 📄 index.html           # HTML entry point
-└── 📄 package.json              # Dependencies and scripts
-```
+- [🏗️ Архитектура Проекта](#️-архитектура-проекта)
+- [📋 Структура Директорий](#-структура-директорий)
+- [🎯 Основные Функции](#-основные-функции)
+- [🛠️ Технологический Стек](#️-технологический-стек)
+- [🧩 Архитектура Компонентов](#-архитектура-компонентов)
+- [🔄 Управление Состоянием](#-управление-состоянием)
+- [🎨 Дизайн Система](#-дизайн-система)
+- [🌐 Интернационализация](#-интернационализация)
+- [🚀 Начало Работы](#-начало-работы)
+- [🧪 Тестирование](#-тестирование)
+- [📦 Сборка и Развертывание](#-сборка-и-развертывание)
+- [🤝 Вклад в Проект](#-вклад-в-проект)
 
-## 🏛️ Architectural Patterns
+## 🏗️ Архитектура Проекта
 
-### Component Architecture
+JunaGO следует **современной React архитектуре** с четким разделением обязанностей, масштабируемой организацией компонентов и надежными паттернами управления состоянием.
 
-The application follows a component-based architecture with these types of components:
+### Архитектурные Принципы
 
-1. **Page Components** (`src/pages/`)
-   - Top-level components representing full pages
-   - Handle routing and composition of smaller components
-   - Example: `CourseDetail.js`, `StudentDashboard.js`
+- **Компонентная Архитектура**: Модульные, переиспользуемые UI компоненты
+- **Организация по Функциям**: Код организован по бизнес-доменам
+- **Разделение Обязанностей**: Четкое разделение UI, бизнес-логики и данных
+- **Прогрессивное Улучшение**: Mobile-first отзывчивый дизайн
+- **Типобезопасность**: Полная интеграция TypeScript для лучшего опыта разработки
 
-2. **Layout Components** (`src/components/layout/`)
-   - Define the structure of the application
-   - Include `MainLayout.tsx`, `MainHeader.tsx`, and `Footer.tsx`
-   - Provide consistent UI structure across pages
-
-3. **Feature Components** (`src/components/*/`)
-   - Domain-specific components organized by feature
-   - Example: `Courses/`, `Hero/`, `Features/`
-
-4. **Common Components** (`src/components/common/`)
-   - Reusable UI elements used across the application
-   - Example: `Button.tsx`, `ProtectedRoute.js`
-
-### State Management
-
-1. **Context API** (`src/contexts/`)
-   - Application uses React Context for global state management
-   - Key contexts:
-     - `AuthContext.js` - Authentication state
-     - `ThemeContext.js` - Light/dark theme settings
-     - `ChatbotContext.jsx` - Chatbot functionality
-
-2. **Custom Hooks** (`src/hooks/`)
-   - Encapsulate and reuse stateful logic
-   - Example: `useAuth.ts`, `useTranslationService.js`
-
-### Data Flow
+### Высокоуровневая Архитектура
 
 ```
-User Interaction → Component → Context/Hooks → Services → External APIs
+Пользовательский Интерфейс
+        ↓
+React Компоненты
+        ↓
+Context API ← → Custom Hooks
+        ↓
+Слой Сервисов
+        ↓
+Внешние API ← → Локальное Хранилище
 ```
 
-- Components handle user interactions
-- Context/Hooks manage state and business logic
-- Services interact with external data sources
-- Data flows back through the same channels to update the UI
-
-### Module Structure
-
-The application follows a feature-based organization:
-
-- Core modules (auth, navigation, theming)
-- Feature modules (courses, workspace, community)
-- Supporting modules (i18n, utilities)
-
-## 🚀 Key Technical Features
-
-1. **Routing** - React Router for navigation
-2. **Internationalization** - Multi-language support through i18n
-3. **Theming** - Dynamic light/dark mode
-4. **Authentication** - User login/registration with protected routes
-5. **Responsive Design** - Mobile-first approach
-6. **TypeScript Integration** - Type safety for components
-
-## 🔧 Technologies Used
-
-- **Frontend Framework**: React
-- **Type Checking**: TypeScript
-- **Styling**: CSS Modules, SCSS
-- **Internationalization**: i18next
-- **State Management**: React Context API
-- **Build Tool**: Create React App with Craco
-- **Containerization**: Docker
-- **CI/CD**: GitHub Actions
-
-## 🔒 Security Architecture
-
-- Protected routes for authenticated content
-- Role-based access control
-- Secure authentication flow
-
-## 🌐 Deployment Architecture
-
-The application is containerized using Docker, making it easy to deploy to any environment.
+## 📋 Структура Директорий
 
 ```
-Docker Container
-├── Nginx (Web Server)
-├── React Application (Static Files)
-└── Configuration
+JunaGO/
+├── 📁 public/                          # Статические ресурсы и HTML шаблон
+│   ├── 📁 assets/                      # Изображения, иконки, шрифты
+│   │   ├── 📁 icons/                   # SVG иконки
+│   │   ├── 📁 images/                  # Изображения и графика
+│   │   └── 📁 fonts/                   # Пользовательские шрифты
+│   ├── 📄 index.html                   # HTML точка входа
+│   ├── 📄 manifest.json                # PWA манифест
+│   └── 📄 robots.txt                   # SEO robots файл
+│
+├── 📁 src/                             # Исходный код
+│   ├── 📁 components/                  # Переиспользуемые UI компоненты
+│   │   ├── 📁 common/                  # Общие компоненты
+│   │   │   ├── 📁 Button/              # Система кнопок
+│   │   │   │   ├── 📄 Button.jsx       # Основной компонент кнопки
+│   │   │   │   └── 📄 Button.module.scss # Стили кнопки
+│   │   │   ├── 📁 Input/               # Компоненты ввода
+│   │   │   ├── 📁 Modal/               # Модальные окна
+│   │   │   └── 📁 LoadingSpinner/      # Индикаторы загрузки
+│   │   ├── 📁 layout/                  # Компоненты макета
+│   │   │   ├── 📄 MainLayout.tsx       # Основной макет приложения
+│   │   │   ├── 📄 Header.tsx           # Навигационный заголовок
+│   │   │   └── 📄 Footer.tsx           # Подвал сайта
+│   │   ├── 📁 Courses/                 # Компоненты курсов
+│   │   │   ├── 📄 CourseCard.js        # Карточка курса
+│   │   │   ├── 📄 CodeEditor.js        # Интеграция редактора кода
+│   │   │   └── 📄 FeaturedCourses.js   # Рекомендуемые курсы
+│   │   ├── 📁 Dashboard/               # Компоненты панели
+│   │   │   └── 📄 CourseProgressCard.js # Отслеживание прогресса
+│   │   ├── 📁 Hero/                    # Главная секция
+│   │   ├── 📁 Features/                # Демонстрация функций
+│   │   ├── 📁 Testimonials/            # Отзывы пользователей
+│   │   ├── 📁 Pricing/                 # Компоненты ценообразования
+│   │   ├── 📁 SalaryCalculator/        # Калькулятор зарплат IT
+│   │   ├── 📁 Chatbot/                 # Интеграция AI чатбота
+│   │   └── 📁 MonacoWorkspace/         # Рабочая область Monaco
+│   │
+│   ├── 📁 pages/                       # Компоненты страниц
+│   │   ├── 📁 Home/                    # Главная страница
+│   │   ├── 📁 Courses/                 # Страницы курсов
+│   │   ├── 📁 Workspace/               # Страницы рабочей области
+│   │   │   ├── 📄 WorkspacePage.tsx    # Основной интерфейс рабочей области
+│   │   │   └── 📄 WorkspaceEditor.css  # Стили рабочей области
+│   │   ├── 📁 Community/               # Функции сообщества
+│   │   ├── 📁 Projects/                # Демонстрация проектов
+│   │   ├── 📁 Roadmap/                 # Дорожные карты обучения
+│   │   ├── 📁 Articles/                # Образовательные статьи
+│   │   ├── 📁 Cart/                    # Корзина покупок
+│   │   ├── 📄 Login.js                 # Страницы аутентификации
+│   │   ├── 📄 Signup.js                # Регистрация пользователя
+│   │   ├── 📄 Settings.js              # Настройки пользователя
+│   │   ├── 📄 StudentDashboard.js      # Панель студента
+│   │   ├── 📄 Analytics.js             # Страница аналитики
+│   │   ├── 📄 Teams.js                 # Управление командами
+│   │   └── 📄 Messages.js              # Система сообщений
+│   │
+│   ├── 📁 contexts/                    # React Context провайдеры
+│   │   ├── 📄 AuthContext.js           # Состояние аутентификации
+│   │   ├── 📄 ThemeContext.js          # Управление темами
+│   │   └── 📄 ChatbotContext.jsx       # Функциональность чатбота
+│   │
+│   ├── 📁 hooks/                       # Пользовательские React хуки
+│   │   ├── 📄 useAuth.ts               # Хук аутентификации
+│   │   ├── 📄 usePageTitle.js          # Динамические заголовки страниц
+│   │   ├── 📄 useDocumentTitle.js      # Управление заголовком документа
+│   │   └── 📄 useTranslationService.js # Утилиты перевода
+│   │
+│   ├── 📁 services/                    # Интеграции внешних сервисов
+│   │   ├── 📄 api.js                   # Конфигурация API клиента
+│   │   ├── 📄 authService.js           # Сервисы аутентификации
+│   │   ├── 📄 courseService.js         # Сервисы данных курсов
+│   │   └── 📄 userService.js           # Сервисы управления пользователями
+│   │
+│   ├── 📁 utils/                       # Утилитные функции
+│   │   ├── 📄 helpers.js               # Общие вспомогательные функции
+│   │   ├── 📄 constants.js             # Константы приложения
+│   │   ├── 📄 validation.js            # Утилиты валидации форм
+│   │   ├── 📄 localStorage.js          # Утилиты локального хранилища
+│   │   ├── 📄 themeContext.js          # Утилиты темы
+│   │   └── 📄 coursesData.js           # Мок данные курсов
+│   │
+│   ├── 📁 styles/                      # Файлы стилей
+│   │   ├── 📁 components/              # Стили компонентов
+│   │   ├── 📁 Dashboard/               # Стили панели
+│   │   ├── 📄 globals.css              # Глобальные стили
+│   │   ├── 📄 variables.css            # CSS пользовательские свойства
+│   │   └── 📄 Login.css                # Стили аутентификации
+│   │
+│   ├── 📁 i18n/                        # Интернационализация
+│   │   └── 📄 index.js                 # Конфигурация i18n
+│   │
+│   ├── 📁 locales/                     # Файлы переводов
+│   │   ├── 📄 en.json                  # Английские переводы
+│   │   ├── 📄 ru.json                  # Русские переводы
+│   │   └── 📄 tr.json                  # Турецкие переводы
+│   │
+│   ├── 📁 types/                       # TypeScript определения типов
+│   ├── 📁 config/                      # Файлы конфигурации
+│   ├── 📁 store/                       # Управление состоянием
+│   ├── 📁 features/                    # Функциональные модули
+│   ├── 📁 constants/                   # Константы приложения
+│   ├── 📁 shared/                      # Общие утилиты
+│   ├── 📁 __tests__/                   # Тестовые файлы
+│   ├── 📁 __mocks__/                   # Моки для тестирования
+│   │
+│   ├── 📄 App.js                       # Основной компонент приложения
+│   ├── 📄 index.js                     # Точка входа приложения
+│   └── 📄 setupTests.ts                # Конфигурация тестов
+│
+├── 📄 package.json                     # Зависимости и скрипты
+├── 📄 tsconfig.json                    # Конфигурация TypeScript
+├── 📄 craco.config.js                  # Конфигурация сборки Craco
+├── 📄 jest.config.js                   # Конфигурация Jest
+├── 📄 .eslintrc.json                   # Конфигурация ESLint
+├── 📄 .prettierrc                      # Конфигурация Prettier
+├── 📄 Dockerfile                       # Конфигурация Docker
+├── 📄 docker-compose.yml               # Docker Compose
+├── 📄 nginx.conf                       # Конфигурация Nginx
+└── 📄 .gitignore                       # Git игнорируемые файлы
 ```
 
-## 📦 Service Integration
+## 🎯 Основные Функции
 
-- Authentication service
-- Course content delivery
-- Interactive workspace
-- User dashboard
+### 🎓 **Функции Образовательной Платформы**
+- **Управление Курсами**: Просмотр, зачисление и отслеживание прогресса обучения
+- **Интерактивная Рабочая Область**: Редактор кода на базе Monaco с подсветкой синтаксиса
+- **Дорожные Карты Обучения**: Структурированные пути обучения для различных технологий
+- **Отслеживание Прогресса**: Визуальные индикаторы прогресса и статистика завершения
+- **Функции Сообщества**: Взаимодействие пользователей и инструменты совместной работы
 
-## 🚀 Getting Started
+### 💻 **Технические Функции**
+- **Современные UI Компоненты**: Единая дизайн-система с пользовательскими компонентами кнопок
+- **Отзывчивый Дизайн**: Mobile-first подход с макетами на основе точек останова
+- **Темная/Светлая Тема**: Динамическое переключение тем с постоянными предпочтениями
+- **Многоязычная Поддержка**: Полная поддержка i18n (Английский, Русский, Турецкий)
+- **Функции Реального Времени**: Живое редактирование кода и возможности предварительного просмотра
+- **Система Аутентификации**: Безопасная регистрация и вход пользователей
+
+### 🔧 **Опыт Разработчика**
+- **Горячая Перезагрузка**: Мгновенная обратная связь при разработке
+- **Интеграция TypeScript**: Типобезопасный опыт разработки
+- **Инструменты Качества Кода**: ESLint, Prettier, Husky pre-commit хуки
+- **Фреймворк Тестирования**: Jest с React Testing Library
+- **CI/CD Пайплайн**: GitHub Actions для автоматизированного тестирования и развертывания
+
+## 🛠️ Технологический Стек
+
+### **Основа Frontend**
+- **React 19.1.0** - UI фреймворк с новейшими функциями
+- **TypeScript 5.3.3** - Типобезопасная разработка JavaScript
+- **React Router DOM 7.6.0** - Клиентская маршрутизация
+- **React Context API** - Решение управления состоянием
+
+### **UI и Стилизация**
+- **SCSS/Sass 1.71.1** - Расширенный CSS с переменными и миксинами
+- **CSS Модули** - Ограниченная стилизация компонентов
+- **React Icons 5.5.0** - Comprehensive библиотека иконок
+- **Отзывчивый Дизайн** - Mobile-first подход
+
+### **Инструменты Разработки**
+- **Craco 7.1.0** - Настройка инструментов сборки
+- **Monaco Editor 0.52.2** - Редактор кода как в VS Code
+- **ESLint & Prettier** - Качество кода и форматирование
+- **Husky & Lint-staged** - Git хуки и линтинг staged файлов
+
+### **Интернационализация**
+- **i18next 25.2.0** - Фреймворк интернационализации
+- **react-i18next 15.5.1** - React интеграция для i18n
+
+## 🧩 Архитектура Компонентов
+
+### **Иерархия Компонентов**
+
+```
+App
+├── Router
+├── ThemeProvider
+├── AuthProvider
+├── I18nProvider
+└── MainLayout
+    ├── Header
+    │   ├── Navigation
+    │   ├── ThemeToggle
+    │   ├── LanguageSelector
+    │   └── UserMenu
+    ├── Main Content
+    │   └── Page Components
+    └── Footer
+```
+
+### **Категории Компонентов**
+
+#### **1. Компоненты Макета**
+- `MainLayout.tsx` - Общая структура приложения
+- `Header.tsx` - Навигация и пользовательские элементы управления
+- `Footer.tsx` - Подвал сайта со ссылками и информацией
+
+#### **2. Общие Компоненты**
+- **Система Кнопок** - Единые компоненты кнопок с вариантами
+  - Основные кнопки (#2F3E46 фон, белый текст)
+  - Вторичные кнопки (прозрачные с границей)
+  - Различные размеры (маленький, средний, большой)
+  - Функции доступности (состояния фокуса, ARIA метки)
+
+#### **3. Функциональные Компоненты**
+- **Компоненты Курсов** - Карточки курсов, списки, отслеживание прогресса
+- **Компоненты Рабочей Области** - Редактор Monaco, проводник файлов, предварительный просмотр
+- **Компоненты Панели** - Виджеты статистики, карточки прогресса
+- **Компоненты Аутентификации** - Вход, регистрация, сброс пароля
+
+## 🔄 Управление Состоянием
+
+### **Реализация Context API**
+
+#### **AuthContext**
+```javascript
+// Управляет состоянием аутентификации пользователя
+- Функциональность входа/выхода пользователя
+- Доступ к защищенным маршрутам
+- Управление профилем пользователя
+- Сохранение сессии
+```
+
+#### **ThemeContext**
+```javascript
+// Обрабатывает переключение тем
+- Переключение темного/светлого режима
+- Сохранение темы в localStorage
+- Обновления CSS пользовательских свойств
+- Определение системных предпочтений
+```
+
+### **Пользовательские Хуки**
+
+#### **usePageTitle**
+```javascript
+// Управление динамическими заголовками страниц
+- SEO-дружественные обновления заголовков
+- Интернационализированные заголовки
+- Синхронизация заголовков вкладок браузера
+```
+
+## 🎨 Дизайн Система
+
+### **Цветовая Палитра**
+```css
+:root {
+  /* Основные Цвета */
+  --primary-color: #2F3E46;
+  --primary-light: #52796F;
+  --primary-dark: #1C2B2F;
+  
+  /* Вторичные Цвета */
+  --secondary-color: #84A98C;
+  --accent-color: #CAD2C5;
+  
+  /* Нейтральные Цвета */
+  --white: #FFFFFF;
+  --gray-light: #F8F9FA;
+  --gray-medium: #E9ECEF;
+  --gray-dark: #495057;
+  --black: #000000;
+}
+```
+
+### **Система Кнопок**
+- **Радиус Границы**: 50px (полностью закругленные)
+- **Основной Вариант**: Темно-зеленый фон (#2F3E46), белый текст
+- **Вторичный Вариант**: Прозрачный фон с границей
+- **Эффекты Наведения**: Плавные цветовые переходы и тонкие трансформации
+- **Состояния Фокуса**: Доступные индикаторы контура
+
+## 🌐 Интернационализация
+
+### **Поддерживаемые Языки**
+- **Английский (en)** - Язык по умолчанию
+- **Русский (ru)** - Полная поддержка перевода
+- **Турецкий (tr)** - Полная локализация
+
+### **Структура Ключей Перевода**
+```javascript
+{
+  "navigation": {
+    "home": "Главная",
+    "courses": "Курсы",
+    "workspace": "Рабочая область",
+    "community": "Сообщество"
+  },
+  "auth": {
+    "login": "Войти",
+    "logout": "Выйти",
+    "register": "Регистрация"
+  }
+}
+```
+
+## 🚀 Начало Работы
+
+### **Предварительные Требования**
+- **Node.js** 16.x или новее
+- **npm** 7.x или новее
+- **Git** для контроля версий
+
+### **Установка**
 
 ```bash
-# Clone the repository
+# Клонировать репозиторий
 git clone https://github.com/gulliyevn/JunaGo1.git
+cd JunaGoCopy
 
-# Install dependencies
+# Установить зависимости
 npm install
 
-# Start development server
+# Запустить сервер разработки
 npm start
 ```
 
-## 📝 Development Guidelines
+### **Настройка Окружения**
 
-- Component-first approach
-- TypeScript for type safety
-- CSS Modules for component styling
-- Context API for state management
-- Feature-based code organization
+Создайте файл `.env` в корневой директории:
+```env
+REACT_APP_API_URL=http://localhost:8080
+REACT_APP_ENVIRONMENT=development
+REACT_APP_VERSION=1.0.0
+```
 
-## Features
-
-- 🚀 Modern React with TypeScript
-- 📦 Redux Toolkit for state management
-- 🎨 SCSS Modules for styling
-- 🔍 ESLint + Prettier for code quality
-- 🧪 Jest + React Testing Library for testing
-- 📱 Responsive design
-- 🔒 Authentication system
-- 🌐 Internationalization
-- 🎯 Code splitting
-- 📊 Performance optimization
-- 🔄 CI/CD with GitHub Actions
-- 🐳 Docker support
-
-## Prerequisites
-
-- Node.js 16.x or later
-- npm 7.x or later
-
-## Available Scripts
-
-- `npm start` - Start development server
-- `npm build` - Build for production
-- `npm test` - Run tests
-- `npm lint` - Run ESLint
-- `npm lint:fix` - Fix ESLint errors
-- `npm format` - Format code with Prettier
-
-## Testing
+### **Рабочий Процесс Разработки**
 
 ```bash
-# Run tests
+# Запустить сервер разработки с горячей перезагрузкой
+npm start
+
+# Запустить тесты в режиме наблюдения
 npm test
 
-# Run tests with coverage
-npm test -- --coverage
+# Проверить качество кода
+npm run lint
+
+# Форматировать код
+npm run format
+
+# Собрать для продакшена
+npm run build
 ```
 
-## Building for Production
+## 🧪 Тестирование
+
+### **Стратегия Тестирования**
+- **Модульные Тесты** - Тестирование отдельных компонентов
+- **Интеграционные Тесты** - Тестирование взаимодействия компонентов
+- **E2E Тесты** - Тестирование полных пользовательских сценариев
+
+### **Запуск Тестов**
 
 ```bash
-# Build the app
-npm run build
+# Запустить все тесты
+npm test
 
-# Build and run with Docker
-docker-compose up --build
+# Запустить тесты с отчетом о покрытии
+npm test -- --coverage
+
+# Запустить тесты в CI режиме
+npm test -- --ci --coverage --watchAll=false
 ```
 
-## Contributing
+## 📦 Сборка и Развертывание
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### **Продакшен Сборка**
 
-## License
+```bash
+# Создать оптимизированную продакшен сборку
+npm run build
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+# Локально протестировать сборку
+npx serve -s build
+```
 
-## Acknowledgments
+### **Docker Развертывание**
 
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-- [Jest](https://jestjs.io/)
-- [React Testing Library](https://testing-library.com/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Docker](https://www.docker.com/) 
+```bash
+# Собрать Docker образ
+docker build -t junago:latest .
+
+# Запустить с Docker Compose
+docker-compose up -d
+```
+
+### **CI/CD Пайплайн**
+- **GitHub Actions** для автоматизированного тестирования
+- **Автоматические сборки** при pull request
+- **Развертывание** в staging/продакшен окружения
+- **Проверки качества кода** с ESLint и Prettier
+
+## 🤝 Вклад в Проект
+
+### **Рекомендации по Разработке**
+
+1. **Стиль Кода**
+   - Следовать конфигурациям ESLint и Prettier
+   - Использовать TypeScript для типобезопасности
+   - Писать осмысленные сообщения коммитов
+
+2. **Рекомендации по Компонентам**
+   - Использовать функциональные компоненты с хуками
+   - Реализовывать правильные PropTypes или TypeScript интерфейсы
+   - Следовать существующей структуре компонентов
+
+### **Рабочий Процесс Вклада**
+
+```bash
+# 1. Форкнуть репозиторий
+# 2. Создать ветку функции
+git checkout -b feature/amazing-feature
+
+# 3. Внести изменения и зафиксировать
+git add .
+git commit -m "feat: добавить удивительную функцию"
+
+# 4. Отправить в ветку
+git push origin feature/amazing-feature
+
+# 5. Создать Pull Request
+```
+
+## 📄 Лицензия
+
+Этот проект лицензирован под MIT License - см. файл [LICENSE](LICENSE) для деталей.
+
+## 🙏 Благодарности
+
+- **React Team** - За удивительный фреймворк
+- **Monaco Editor** - За мощный редактор кода
+- **i18next** - За поддержку интернационализации
+- **Open Source Community** - За невероятные инструменты и библиотеки
+
+---
+
+**Создано с ❤️ командой JunaGO** 
