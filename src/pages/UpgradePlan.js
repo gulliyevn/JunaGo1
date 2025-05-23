@@ -2,10 +2,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { Button } from '../components/common/Button/Button';
+import usePageTitle from '../hooks/usePageTitle';
 import '../styles/UpgradePlan.css';
 
 const UpgradePlan = () => {
     const { user, isPremium } = useAuth();
+    const pageTitle = usePageTitle('Upgrade Plan');
 
     const plans = [
         {
@@ -62,13 +65,20 @@ const UpgradePlan = () => {
     if (!user) {
         return (
             <div className="upgrade-page">
+                {pageTitle}
                 <div className="upgrade-container">
                     <div className="auth-required">
                         <h2>Авторизация требуется</h2>
                         <p>Войдите в систему, чтобы управлять подпиской</p>
-                        <Link to="/login" className="login-btn">
+                        <Button 
+                            as={Link} 
+                            to="/login" 
+                            variant="primary" 
+                            size="medium" 
+                            className="login-btn"
+                        >
                             Войти
-                        </Link>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -77,6 +87,7 @@ const UpgradePlan = () => {
 
     return (
         <div className="upgrade-page">
+            {pageTitle}
             <div className="upgrade-container">
                 <div className="upgrade-header">
                     <h1>Выберите план</h1>
@@ -128,16 +139,23 @@ const UpgradePlan = () => {
 
                             <div className="plan-action">
                                 {plan.current ? (
-                                    <button className="plan-button current" disabled>
+                                    <Button 
+                                        variant="primary"
+                                        size="medium"
+                                        className="plan-button current"
+                                        disabled
+                                    >
                                         Текущий план
-                                    </button>
+                                    </Button>
                                 ) : (
-                                    <button
+                                    <Button
+                                        variant="primary"
+                                        size="medium"
                                         className="plan-button"
                                         onClick={() => handleUpgrade(plan.id)}
                                     >
                                         {plan.price === 0 ? 'Остаться' : 'Выбрать план'}
-                                    </button>
+                                    </Button>
                                 )}
                             </div>
                         </div>

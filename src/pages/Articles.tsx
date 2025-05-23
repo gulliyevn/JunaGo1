@@ -4,6 +4,7 @@ import { Article, ArticleCategory, ArticlePaginationOptions } from '../types/Art
 import { getArticles, getCategories } from '../services/articleService';
 import ArticleGrid from '../components/article/ArticleGrid';
 import Pagination from '../components/common/Pagination';
+import usePageTitle from '../hooks/usePageTitle';
 import styles from './Articles.module.css';
 
 const Articles: React.FC = () => {
@@ -20,6 +21,7 @@ const Articles: React.FC = () => {
   });
   const [loading, setLoading] = useState(true);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const pageTitle = usePageTitle('Articles');
 
   // Загрузка категорий при монтировании компонента
   useEffect(() => {
@@ -92,6 +94,7 @@ const Articles: React.FC = () => {
 
   return (
     <div className={styles.articlesPage}>
+      {pageTitle}
       <div className={styles.header}>
         <h1 className={styles.title}>Developer Articles</h1>
         

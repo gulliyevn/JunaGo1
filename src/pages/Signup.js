@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { Button } from '../components/common/Button/Button';
 import '../styles/Signup.css';
 
 const Signup = () => {
@@ -187,14 +188,16 @@ const Signup = () => {
                                     autoComplete="new-password"
                                     required
                                 />
-                                <button
+                                <Button
                                     type="button"
-                                    className="password-toggle"
+                                    variant="secondary"
+                                    size="small"
+                                    className="password-toggle-btn"
                                     onClick={() => togglePasswordVisibility('password')}
                                     disabled={loading}
                                 >
                                     <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
-                                </button>
+                                </Button>
                             </div>
                             {errors.password && <span className="error-message">{errors.password}</span>}
                         </div>
@@ -213,14 +216,16 @@ const Signup = () => {
                                     autoComplete="new-password"
                                     required
                                 />
-                                <button
+                                <Button
                                     type="button"
-                                    className="password-toggle"
+                                    variant="secondary"
+                                    size="small"
+                                    className="password-toggle-btn"
                                     onClick={() => togglePasswordVisibility('confirm')}
                                     disabled={loading}
                                 >
                                     <i className={showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
-                                </button>
+                                </Button>
                             </div>
                             {errors.password_confirmation && <span className="error-message">{errors.password_confirmation}</span>}
                         </div>
@@ -235,28 +240,34 @@ const Signup = () => {
                                 />
                                 <span>
                                     I accept the{' '}
-                                    <button
+                                    <Button
                                         type="button"
-                                        className="modal-link"
+                                        variant="secondary"
+                                        size="small"
+                                        className="modal-link-btn"
                                         onClick={() => setShowTermsModal(true)}
                                     >
                                         Terms of Service
-                                    </button>
+                                    </Button>
                                     {' '}and{' '}
-                                    <button
+                                    <Button
                                         type="button"
-                                        className="modal-link"
+                                        variant="secondary"
+                                        size="small"
+                                        className="modal-link-btn"
                                         onClick={() => setShowPrivacyModal(true)}
                                     >
                                         Privacy Policy
-                                    </button>
+                                    </Button>
                                 </span>
                             </label>
                             {errors.terms && <span className="error-message">{errors.terms}</span>}
                         </div>
 
-                        <button
+                        <Button
                             type="submit"
+                            variant="primary"
+                            size="medium"
                             className="signup-button"
                             disabled={loading}
                         >
@@ -268,7 +279,7 @@ const Signup = () => {
                             ) : (
                                 'Create account'
                             )}
-                        </button>
+                        </Button>
                     </form>
 
                     <div className="signup-footer">
@@ -288,12 +299,14 @@ const Signup = () => {
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h2>Terms of Service</h2>
-                            <button
-                                className="modal-close"
+                            <Button
+                                variant="secondary"
+                                size="small"
+                                className="modal-close-btn"
                                 onClick={() => setShowTermsModal(false)}
                             >
                                 <i className="fas fa-times"></i>
-                            </button>
+                            </Button>
                         </div>
                         <div className="modal-body">
                             <p>By using JunaGO, you agree to our terms of service...</p>
@@ -313,12 +326,14 @@ const Signup = () => {
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h2>Privacy Policy</h2>
-                            <button
-                                className="modal-close"
+                            <Button
+                                variant="secondary"
+                                size="small"
+                                className="modal-close-btn"
                                 onClick={() => setShowPrivacyModal(false)}
                             >
                                 <i className="fas fa-times"></i>
-                            </button>
+                            </Button>
                         </div>
                         <div className="modal-body">
                             <p>We respect your privacy and protect your personal data...</p>

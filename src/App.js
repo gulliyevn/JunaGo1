@@ -36,9 +36,16 @@ import ContactPage from './pages/Contact/ContactPage';
 import FeedbackPage from './pages/Feedback/FeedbackPage';
 import LearningPathPage from './pages/LearningPath/LearningPathPage';
 import CartPage from './pages/Cart/CartPage';
-import WorkspacePage from './pages/Workspace/WorkspacePage';
 import Articles from './pages/Articles';
 import ProjectsPage from './pages/Projects/ProjectsPage';
+import WorkspacePage from './pages/Workspace/WorkspacePage';
+
+// Import additional pages with dynamic titles
+import CodeEditor from './pages/CodeEditor';
+import Analytics from './pages/Analytics';
+import Messages from './pages/Messages';
+import Teams from './pages/Teams';
+import Settings from './pages/Settings';
 
 // Simple page components
 
@@ -124,6 +131,31 @@ function App() {
               <Route path="/workspace" element={
                 <ProtectedRoute requirePremium>
                   <WorkspacePage />
+                </ProtectedRoute>
+              } />
+              <Route path="/code-editor" element={
+                <ProtectedRoute>
+                  <CodeEditor />
+                </ProtectedRoute>
+              } />
+              <Route path="/analytics" element={
+                <ProtectedRoute>
+                  <Analytics />
+                </ProtectedRoute>
+              } />
+              <Route path="/messages" element={
+                <ProtectedRoute>
+                  <Messages />
+                </ProtectedRoute>
+              } />
+              <Route path="/teams" element={
+                <ProtectedRoute>
+                  <Teams />
+                </ProtectedRoute>
+              } />
+              <Route path="/settings" element={
+                <ProtectedRoute>
+                  <Settings />
                 </ProtectedRoute>
               } />
               <Route path="/projects" element={

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../utils/themeContext';
+import { Button } from '../common/Button/Button';
 import styles from './Header.module.css';
 
 const Header: React.FC = () => {
@@ -63,22 +64,26 @@ const Header: React.FC = () => {
           </Link>
         </div>
         
-        <button 
-          className={styles.backButton} 
+        <Button 
+          variant="secondary"
+          size="small"
+          className={styles.backAction} 
           onClick={goBack}
           aria-label={t('go_back')}
         >
           <img src="/assets/icons/arrow-back.svg" alt="Back" className={styles.iconSvg} />
-        </button>
+        </Button>
 
-        <button 
-          className={styles.menuToggle} 
+        <Button 
+          variant="secondary"
+          size="small"
+          className={styles.menuToggleAction} 
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? t('close_menu') : t('open_menu')}
         >
           {isMenuOpen ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
-        </button>
+        </Button>
 
         {/* Mobile menu overlay */}
         <div 
@@ -138,40 +143,48 @@ const Header: React.FC = () => {
           
           {/* Right section (appears both in mobile nav and desktop header) */}
           <div className={styles.rightSection}>
-            <button 
-              className={styles.themeToggle} 
+            <Button 
+              variant="secondary"
+              size="small"
+              className={styles.themeToggleAction} 
               onClick={toggleTheme}
               aria-label={isDarkMode ? t('switch_to_light_mode') : t('switch_to_dark_mode')}
             >
               {isDarkMode ? <i className="fas fa-sun"></i> : <i className="fas fa-moon"></i>}
-            </button>
+            </Button>
             
             <Link to="/cart" className={styles.cartLink} onClick={closeMenu}>
               <img src="/assets/icons/shopping-bag.svg" alt="Cart" className={styles.iconSvg} />
             </Link>
 
             <div className={styles.langSelector}>
-              <button 
-                className={`${styles.langButton} ${i18n.language === 'en' ? styles.langButtonActive : ''}`} 
+              <Button 
+                variant={i18n.language === 'en' ? 'primary' : 'secondary'}
+                size="small"
+                className={styles.langAction} 
                 onClick={() => changeLanguage('en')}
                 aria-label="English"
               >
                 EN
-              </button>
-              <button 
-                className={`${styles.langButton} ${i18n.language === 'ru' ? styles.langButtonActive : ''}`} 
+              </Button>
+              <Button 
+                variant={i18n.language === 'ru' ? 'primary' : 'secondary'}
+                size="small"
+                className={styles.langAction} 
                 onClick={() => changeLanguage('ru')}
                 aria-label="Russian"
               >
                 RU
-              </button>
-              <button 
-                className={`${styles.langButton} ${i18n.language === 'tr' ? styles.langButtonActive : ''}`} 
+              </Button>
+              <Button 
+                variant={i18n.language === 'tr' ? 'primary' : 'secondary'}
+                size="small"
+                className={styles.langAction} 
                 onClick={() => changeLanguage('tr')}
                 aria-label="Turkish"
               >
                 TR
-              </button>
+              </Button>
             </div>
 
             <Link to="/login" className={styles.loginButton} onClick={closeMenu}>
@@ -183,40 +196,48 @@ const Header: React.FC = () => {
 
         {/* Desktop right section - same content as the one inside nav but only visible on desktop */}
         <div className={styles.rightSection}>
-          <button 
-            className={styles.themeToggle} 
+          <Button 
+            variant="secondary"
+            size="small"
+            className={styles.themeToggleAction} 
             onClick={toggleTheme}
             aria-label={isDarkMode ? t('switch_to_light_mode') : t('switch_to_dark_mode')}
           >
             {isDarkMode ? <i className="fas fa-sun"></i> : <i className="fas fa-moon"></i>}
-          </button>
+          </Button>
           
           <Link to="/cart" className={styles.cartLink}>
             <img src="/assets/icons/shopping-bag.svg" alt="Cart" className={styles.iconSvg} />
           </Link>
           
           <div className={styles.langSelector}>
-            <button 
-              className={`${styles.langButton} ${i18n.language === 'en' ? styles.langButtonActive : ''}`} 
+            <Button 
+              variant={i18n.language === 'en' ? 'primary' : 'secondary'}
+              size="small"
+              className={styles.langAction} 
               onClick={() => changeLanguage('en')}
               aria-label="English"
             >
               EN
-            </button>
-            <button 
-              className={`${styles.langButton} ${i18n.language === 'ru' ? styles.langButtonActive : ''}`} 
+            </Button>
+            <Button 
+              variant={i18n.language === 'ru' ? 'primary' : 'secondary'}
+              size="small"
+              className={styles.langAction} 
               onClick={() => changeLanguage('ru')}
               aria-label="Russian"
             >
               RU
-            </button>
-            <button 
-              className={`${styles.langButton} ${i18n.language === 'tr' ? styles.langButtonActive : ''}`} 
+            </Button>
+            <Button 
+              variant={i18n.language === 'tr' ? 'primary' : 'secondary'}
+              size="small"
+              className={styles.langAction} 
               onClick={() => changeLanguage('tr')}
               aria-label="Turkish"
             >
               TR
-            </button>
+            </Button>
           </div>
 
           <Link to="/login" className={styles.loginButton}>

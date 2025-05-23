@@ -4,6 +4,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { html } from '@codemirror/lang-html';
 import { oneDark } from '@codemirror/theme-one-dark';
+import { Button } from '../../components/common/Button/Button';
 import '../../styles/components/CodeEditor.css';
 
 export default function CodeEditor() {
@@ -89,18 +90,22 @@ function sumNumbers(a, b) {
             <div className="editor-content">
                 {/* Code tabs */}
                 <div className="code-tabs">
-                    <button
+                    <Button 
+                        variant={activeTab === 'javascript' ? 'primary' : 'secondary'}
+                        size="small"
                         className={`code-tab ${activeTab === 'javascript' ? 'active' : ''}`}
                         onClick={() => setActiveTab('javascript')}
                     >
                         script.js
-                    </button>
-                    <button
+                    </Button>
+                    <Button 
+                        variant={activeTab === 'html' ? 'primary' : 'secondary'}
+                        size="small"
                         className={`code-tab ${activeTab === 'html' ? 'active' : ''}`}
                         onClick={() => setActiveTab('html')}
                     >
                         index.html
-                    </button>
+                    </Button>
                 </div>
 
                 {/* Code editor */}
@@ -127,12 +132,22 @@ function sumNumbers(a, b) {
                     <div className="console-header">
                         <span>Console</span>
                         <div className="console-controls">
-                            <button className="run-code-button" onClick={runCode}>
+                            <Button 
+                                variant="primary"
+                                size="small"
+                                className="run-code-button"
+                                onClick={runCode}
+                            >
                                 Run <i className="run-icon"></i>
-                            </button>
-                            <button className="clear-console-button" onClick={clearConsole}>
+                            </Button>
+                            <Button 
+                                variant="secondary"
+                                size="small"
+                                className="clear-console-button"
+                                onClick={clearConsole}
+                            >
                                 <i className="trash-icon"></i> Clear
-                            </button>
+                            </Button>
                         </div>
                     </div>
                     <div

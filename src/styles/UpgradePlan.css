@@ -62,18 +62,18 @@
 }
 
 .login-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
-    color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border-radius: var(--btn-border-radius);
     text-decoration: none;
-    font-weight: 500;
-    transition: transform 0.2s ease;
+    transition: var(--btn-transition);
 }
 
 .login-btn:hover {
-    transform: translateY(-2px);
+    background-color: var(--btn-primary-hover-bg);
+    color: var(--btn-primary-hover-text);
+    transform: translateY(-1px);
+    box-shadow: var(--btn-primary-shadow);
 }
 
 /* Plans Grid */
@@ -206,28 +206,11 @@
 
 .plan-button {
     width: 100%;
-    padding: 0.875rem 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.plan-button:not(.current) {
-    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
-    color: white;
-}
-
-.plan-button:not(.current):hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(var(--accent-color-rgb, 152, 181, 164), 0.3);
 }
 
 .plan-button.current {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #4CAF50 !important;
+    color: white !important;
     cursor: default;
 }
 

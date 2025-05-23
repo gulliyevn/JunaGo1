@@ -1,8 +1,8 @@
 // src/pages/Courses.js
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import CourseCard from '../components/Courses/CourseCard';
 import coursesData from '../utils/coursesData';
+import usePageTitle from '../hooks/usePageTitle';
 import '../styles/Courses.css';
 
 const Courses = () => {
@@ -10,6 +10,7 @@ const Courses = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [filterCategory, setFilterCategory] = useState('');
     const [filterLevel, setFilterLevel] = useState('');
+    const pageTitle = usePageTitle('Courses');
 
     // Get unique categories and levels for filters
     const categories = [...new Set(coursesData.map(course => course.category))];
@@ -34,10 +35,7 @@ const Courses = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Courses | JunaGO</title>
-            </Helmet>
-
+            {pageTitle}
             <main className="courses-page">
                 <div className="courses-header">
                     <h1 className="courses-title">Explore Our Courses</h1>

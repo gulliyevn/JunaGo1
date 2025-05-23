@@ -1,6 +1,7 @@
 // src/components/Dashboard/CourseProgressCard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '../../components/common/Button/Button';
 import '../../styles/Dashboard/CourseProgressCard.css';
 
 const CourseProgressCard = ({ course }) => {
@@ -75,18 +76,22 @@ const CourseProgressCard = ({ course }) => {
             </div>
 
             <div className="card-actions">
-                <Link
+                <Button
+                    as={Link}
                     to={`/courses/${course.id}/lesson`}
-                    className="continue-btn"
+                    variant="primary"
+                    className="continue-action"
                 >
                     Продолжить обучение
-                </Link>
-                <Link
+                </Button>
+                <Button
+                    as={Link}
                     to={`/courses/${course.id}`}
-                    className="details-btn"
+                    variant="secondary"
+                    className="details-action"
                 >
                     Детали курса
-                </Link>
+                </Button>
             </div>
         </div>
     );

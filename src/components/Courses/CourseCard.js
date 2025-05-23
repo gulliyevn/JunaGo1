@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'; 
 import { FaUser, FaClock, FaStar, FaUsers } from 'react-icons/fa';
+import { Button } from '../../components/common/Button/Button';
 import '../../styles/components/CourseCard.css';
 
 const CourseCard = ({ course }) => {
@@ -44,12 +45,14 @@ const CourseCard = ({ course }) => {
                         </div>
                     )}
                 </div>
-                <Link 
+                <Button 
+                    as={Link}
                     to={`/courses/${course.id}/lessons/${firstLessonId}`} 
-                    className="course-button"
+                    variant="primary"
+                    className="course-view-btn"
                 >
                     {t('view_course')}
-                </Link>
+                </Button>
             </div>
         </div>
     );

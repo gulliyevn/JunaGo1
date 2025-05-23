@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CourseCard from './CourseCard';
+import { Button } from '../../components/common/Button/Button';
 import coursesData from '../../utils/coursesData';
 import '../../styles/components/FeaturedCourses.css';
 
@@ -24,9 +25,14 @@ const FeaturedCourses = () => {
                 </div>
 
                 <div className="featured-courses-action">
-                    <Link to="/courses" className="view-all-button">
+                    <Button 
+                        as={Link} 
+                        to="/courses" 
+                        variant="primary"
+                        className="view-all-action"
+                    >
                         View All Courses <i className="fas fa-arrow-right"></i>
-                    </Link>
+                    </Button>
                 </div>
             </div>
         </section>

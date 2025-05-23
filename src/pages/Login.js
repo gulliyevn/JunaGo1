@@ -2,12 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { Button } from '../components/common/Button/Button';
+import usePageTitle from '../hooks/usePageTitle';
 import '../styles/Login.css';
 
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { login, isAuthenticated } = useAuth();
+    const pageTitle = usePageTitle('Login');
 
     const [formData, setFormData] = useState({
         email: '',
@@ -82,6 +85,7 @@ const Login = () => {
 
     return (
         <div className="login-page">
+            {pageTitle}
             <div className="login-container">
                 <div className="login-card">
                     <div className="login-header">
@@ -126,14 +130,16 @@ const Login = () => {
                                     autoComplete="current-password"
                                     required
                                 />
-                                <button
+                                <Button
                                     type="button"
-                                    className="password-toggle"
+                                    variant="secondary"
+                                    size="small"
+                                    className="password-toggle-btn"
                                     onClick={togglePasswordVisibility}
                                     disabled={loading}
                                 >
                                     <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
-                                </button>
+                                </Button>
                             </div>
                         </div>
 
@@ -147,8 +153,10 @@ const Login = () => {
                             </Link>
                         </div>
 
-                        <button
+                        <Button 
                             type="submit"
+                            variant="primary"
+                            size="medium"
                             className="login-button"
                             disabled={loading}
                         >
@@ -160,7 +168,7 @@ const Login = () => {
                             ) : (
                                 'Sign In'
                             )}
-                        </button>
+                        </Button>
                     </form>
 
                     <div className="login-divider">
@@ -168,24 +176,28 @@ const Login = () => {
                     </div>
 
                     <div className="social-login">
-                        <button
+                        <Button
                             type="button"
+                            variant="secondary"
+                            size="medium"
                             className="social-button google"
                             onClick={handleGoogleLogin}
                             disabled={loading}
                         >
                             <i className="fab fa-google"></i>
                             Google
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                             type="button"
+                            variant="secondary"
+                            size="medium"
                             className="social-button facebook"
                             onClick={handleFacebookLogin}
                             disabled={loading}
                         >
                             <i className="fab fa-facebook-f"></i>
                             Facebook
-                        </button>
+                        </Button>
                     </div>
 
                     <div className="login-footer">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from '../common/Button/Button';
 import '../../styles/SalaryCalculator.css';
 
 const SalaryCalculator = () => {
@@ -92,12 +93,14 @@ const SalaryCalculator = () => {
                     </select>
                 </div>
 
-                <button
+                <Button
                     onClick={calculateSalary}
-                    className="calculator-button"
+                    variant="primary"
+                    size="medium"
+                    className="calculator-action"
                 >
                     Calculate Monthly Salary
-                </button>
+                </Button>
             </div>
 
             <div className="calculator-result">

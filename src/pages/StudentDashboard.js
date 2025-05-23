@@ -8,12 +8,15 @@ import AchievementsCard from '../components/Dashboard/AchievementsCard';
 import UpcomingLessonsCard from '../components/Dashboard/UpcomingLessonsCard';
 import DashboardSidebar from '../components/Dashboard/DashboardSidebar';
 import { useAuth } from '../contexts/AuthContext';
+import usePageTitle from '../hooks/usePageTitle';
 import '../styles/StudentDashboard.css';
 
 const StudentDashboard = () => {
     const { t } = useTranslation();
     const { user, isDemoMode } = useAuth();
     const [activeTab, setActiveTab] = useState('dashboard');
+    const pageTitle = usePageTitle('Dashboard');
+    
     const [studentData, setStudentData] = useState({
         name: user?.name || "Иван Петров",
         level: "Intermediate Developer",
@@ -210,6 +213,7 @@ const StudentDashboard = () => {
 
     return (
         <div className="student-dashboard-container">
+            {pageTitle}
             <DashboardSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
             <div className="dashboard-content">
                 <div className="dashboard-header">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import MainLayout from '../../components/layout/MainLayout';
+import { Button } from '../../components/common/Button/Button';
 import styles from './RoadmapPage.module.css';
 
 const roadmapCategories = [
@@ -51,7 +52,13 @@ const RoadmapPage: React.FC = () => {
               Explore our developer roadmaps to get a clear path to becoming a software developer.
               Choose your path and start learning today.
             </p>
-            <button className={styles.getStartedButton}>Get Started</button>
+            <Button 
+              variant="primary" 
+              size="large" 
+              className={styles.getStartedAction}
+            >
+              Get Started
+            </Button>
           </div>
         </div>
 
@@ -60,15 +67,15 @@ const RoadmapPage: React.FC = () => {
           
           <div className={styles.categories}>
             {roadmapCategories.map((category) => (
-              <button
+              <Button
                 key={category.id}
-                className={`${styles.categoryButton} ${
-                  activeCategory === category.id ? styles.activeCategory : ''
-                }`}
+                variant={activeCategory === category.id ? "primary" : "secondary"}
+                size="small"
+                className={styles.categoryAction}
                 onClick={() => setActiveCategory(category.id)}
               >
                 {category.name}
-              </button>
+              </Button>
             ))}
           </div>
 

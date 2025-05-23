@@ -8,6 +8,7 @@ import { ProjectService } from '../../services/ProjectService';
 import { Project } from '../../types/Project';
 import styles from './ProjectsPage.module.scss';
 import { Button } from '../../components/common/Button/Button';
+import usePageTitle from '../../hooks/usePageTitle';
 
 const ProjectsPage: React.FC = () => {
   const { user } = useAuth();
@@ -18,6 +19,7 @@ const ProjectsPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [filter, setFilter] = useState<string>('all');
   const [sort, setSort] = useState<string>('updated');
+  const pageTitle = usePageTitle('Projects');
 
   useEffect(() => {
     // Fetch projects
@@ -100,6 +102,7 @@ const ProjectsPage: React.FC = () => {
 
   return (
     <DashboardLayout>
+      {pageTitle}
       <div className={styles.projectsPage}>
         <ProjectHeader 
           user={user}

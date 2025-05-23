@@ -1,5 +1,6 @@
 // src/components/Testimonials/Testimonials.js
 import React, { useEffect, useState } from 'react';
+import { Button } from '../common/Button/Button';
 import '../../styles/Testimonials.css';
 
 const Testimonials = () => {
@@ -88,11 +89,12 @@ const Testimonials = () => {
                         </p>
 
                         <div className="testimonials-desktop-nav">
-                            <button
-                                aria-label="Previous slide"
-                                id="keen-slider-previous-desktop"
-                                className="testimonials-nav-button"
+                            <Button
+                                variant="secondary"
+                                size="small"
+                                className="testimonials-nav-action"
                                 onClick={() => slider?.prev()}
+                                aria-label="Previous slide"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -104,13 +106,14 @@ const Testimonials = () => {
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
                                 </svg>
-                            </button>
+                            </Button>
 
-                            <button
-                                aria-label="Next slide"
-                                id="keen-slider-next-desktop"
-                                className="testimonials-nav-button"
+                            <Button
+                                variant="secondary"
+                                size="small"
+                                className="testimonials-nav-action"
                                 onClick={() => slider?.next()}
+                                aria-label="Next slide"
                             >
                                 <svg
                                     className="testimonials-nav-icon"
@@ -121,7 +124,7 @@ const Testimonials = () => {
                                 >
                                     <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
                                 </svg>
-                            </button>
+                            </Button>
                         </div>
                     </div>
 
@@ -148,11 +151,12 @@ const Testimonials = () => {
                 </div>
 
                 <div className="testimonials-mobile-nav">
-                    <button
-                        aria-label="Previous slide"
-                        id="keen-slider-previous"
-                        className="testimonials-nav-button"
+                    <Button
+                        variant="secondary"
+                        size="small"
+                        className="testimonials-nav-action"
                         onClick={() => slider?.prev()}
+                        aria-label="Previous slide"
                     >
                         <svg
                             className="testimonials-nav-icon testimonials-nav-icon-prev"
@@ -163,13 +167,14 @@ const Testimonials = () => {
                         >
                             <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
                         </svg>
-                    </button>
+                    </Button>
 
-                    <button
-                        aria-label="Next slide"
-                        id="keen-slider-next"
-                        className="testimonials-nav-button"
+                    <Button
+                        variant="secondary"
+                        size="small"
+                        className="testimonials-nav-action"
                         onClick={() => slider?.next()}
+                        aria-label="Next slide"
                     >
                         <svg
                             className="testimonials-nav-icon"
@@ -180,7 +185,7 @@ const Testimonials = () => {
                         >
                             <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
                         </svg>
-                    </button>
+                    </Button>
                 </div>
             </div>
         </section>

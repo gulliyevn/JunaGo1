@@ -1,5 +1,7 @@
 // src/components/Pricing/Pricing.js
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '../common/Button/Button';
 import '../../styles/Pricing.css';
 
 const Pricing = () => {
@@ -15,7 +17,14 @@ const Pricing = () => {
                             <strong>20$</strong>
                             <span>/month</span>
                         </div>
-                        <a href="#" className="pricing-button">Get Started</a>
+                        <Button 
+                            as={Link} 
+                            to="/upgrade" 
+                            variant="primary" 
+                            className="pricing-action"
+                        >
+                            Get Started
+                        </Button>
                     </div>
                     <div className="pricing-features">
                         <h4 className="pricing-features-title">What's included:</h4>
@@ -39,7 +48,14 @@ const Pricing = () => {
                             <strong>30$</strong>
                             <span>/month</span>
                         </div>
-                        <a href="#" className="pricing-button">Get Started</a>
+                        <Button 
+                            as={Link} 
+                            to="/upgrade" 
+                            variant="primary" 
+                            className="pricing-action"
+                        >
+                            Get Started
+                        </Button>
                     </div>
                     <div className="pricing-features">
                         <h4 className="pricing-features-title">What's included:</h4>
@@ -63,7 +79,14 @@ const Pricing = () => {
                             <strong>100$</strong>
                             <span>/month</span>
                         </div>
-                        <a href="#" className="pricing-button">Get Started</a>
+                        <Button 
+                            as={Link} 
+                            to="/upgrade" 
+                            variant="primary" 
+                            className="pricing-action"
+                        >
+                            Get Started
+                        </Button>
                     </div>
                     <div className="pricing-features">
                         <h4 className="pricing-features-title">What's included:</h4>

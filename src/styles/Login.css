@@ -144,15 +144,15 @@
 /* Login Button */
 .login-button {
     width: 100%;
-    padding: 0.875rem 1rem;
-    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
-    color: white;
+    padding: 12px 32px;
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
+    border-radius: var(--btn-border-radius);
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: var(--btn-transition);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,12 +160,14 @@
 }
 
 .login-button:hover:not(:disabled) {
+    background-color: var(--btn-primary-hover-bg);
+    color: var(--btn-primary-hover-text);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(var(--accent-color-rgb, 152, 181, 164), 0.3);
+    box-shadow: var(--btn-primary-shadow);
 }
 
 .login-button:disabled {
-    opacity: 0.7;
+    opacity: var(--btn-disabled-opacity);
     cursor: not-allowed;
     transform: none;
 }
@@ -245,40 +247,40 @@
 
 .social-button {
     flex: 1;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 10px 30px;
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 2px solid var(--btn-secondary-border);
+    border-radius: var(--btn-border-radius);
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--btn-transition);
     gap: 0.5rem;
 }
 
 .social-button:hover:not(:disabled) {
-    background-color: var(--accent-color);
-    color: white;
-    border-color: var(--accent-color);
+    background-color: var(--btn-secondary-hover-bg);
+    color: var(--btn-secondary-hover-text);
+    transform: translateY(-1px);
 }
 
 .social-button:disabled {
-    opacity: 0.6;
+    opacity: var(--btn-disabled-opacity);
     cursor: not-allowed;
 }
 
 .social-button.google:hover:not(:disabled) {
-    background-color: #DB4437;
     border-color: #DB4437;
+    color: #DB4437;
 }
 
 .social-button.facebook:hover:not(:disabled) {
-    background-color: #4267B2;
     border-color: #4267B2;
+    color: #4267B2;
 }
 
 /* Footer */
@@ -316,18 +318,26 @@
 }
 
 .demo-button {
-    background-color: var(--accent-color);
-    color: white;
+    padding: 8px 24px;
+    width: auto;
+    font-size: 14px;
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
+    border-radius: var(--btn-border-radius);
+    font-weight: 500;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: var(--btn-transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .demo-button:hover {
-    opacity: 0.9;
+    background-color: var(--btn-primary-hover-bg);
+    color: var(--btn-primary-hover-text);
+    transform: translateY(-1px);
+    box-shadow: var(--btn-primary-shadow);
 }
 
 /* Responsive Design */

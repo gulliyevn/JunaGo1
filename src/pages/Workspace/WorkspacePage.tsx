@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useChatbot } from '../../contexts/ChatbotContext';
+import { Button } from '../../components/common/Button/Button';
+import usePageTitle from '../../hooks/usePageTitle';
 import './WorkspaceEditor.css';
 import * as monaco from 'monaco-editor';
 
@@ -19,6 +21,7 @@ interface FileContents {
 const WorkspacePage: React.FC = () => {
   const { user } = useAuth();
   const { openChatbot } = useChatbot();
+  const pageTitle = usePageTitle('Workspace');
   
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const monacoRef = useRef<typeof monaco | null>(null);
@@ -27,6 +30,9 @@ const WorkspacePage: React.FC = () => {
   const [currentFile, setCurrentFile] = useState<string>('project/index.html');
   const [currentLanguage, setCurrentLanguage] = useState<string>('html');
   const [cursorPosition, setCursorPosition] = useState<CursorPosition>({ lineNumber: 1, column: 1 });
+  const [previewVisible, setPreviewVisible] = useState<boolean>(false);
+  const [darkTheme, setDarkTheme] = useState<boolean>(false);
+
   const [fileContents, setFileContents] = useState<FileContents>({
     'project/index.html': 
 `<!DOCTYPE html>
@@ -62,38 +68,43 @@ p {
     line-height: 1.6;
 }`,
     'project/js/main.js': 
-`// main.js
+`// Main JavaScript file
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Document is ready!');
-    
-    // You can add your JavaScript code here
-    const greeting = 'Welcome to JunaGO!';
-    console.log(greeting);
-    
-    // Example: Add a click event to the h1 element
-    const h1Element = document.querySelector('h1');
-    if (h1Element) {
-        h1Element.addEventListener('click', function() {
-            this.style.color = getRandomColor();
-        });
-    }
-    
-    // Function to generate a random color
-    function getRandomColor() {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+    console.log('Document ready!');
+
+    // Example function
+    function greetUser() {
+        const name = prompt('What is your name?');
+        if (name) {
+            alert('Hello, ' + name + '! Welcome to JunaGO Workspace.');
         }
-        return color;
     }
+    
+    // Call the function after 2 seconds
+    setTimeout(greetUser, 2000);
 });`
   });
-  
-  const [previewVisible, setPreviewVisible] = useState<boolean>(false);
-  const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
-  // Initialize Monaco editor and load initial file
+  // Helper function to get language from file path
+  const getLanguageFromFilePath = (filePath: string): string => {
+    const extension = filePath.split('.').pop()?.toLowerCase();
+    switch (extension) {
+      case 'js':
+        return 'javascript';
+      case 'css':
+        return 'css';
+      case 'html':
+        return 'html';
+      case 'ts':
+        return 'typescript';
+      case 'json':
+        return 'json';
+      default:
+        return 'plaintext';
+    }
+  };
+
+  // Initialize editor when component mounts
   useEffect(() => {
     // Ensure Monaco is properly configured
     if (!window.MonacoEnvironment) {
@@ -152,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('Editor container element not found');
           return;
         }
-        
+
         // Create editor instance
         const editor = Monaco.editor.create(editorContainerRef.current, {
           value: fileContents[currentFile],
@@ -167,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
           renderLineHighlight: 'all',
           guides: { indentation: true },
         });
-        
+
         editorRef.current = editor;
         
         // Add editor change event
@@ -177,83 +188,64 @@ document.addEventListener('DOMContentLoaded', function() {
             [currentFile]: editor.getValue()
           }));
         });
-        
+
         // Add cursor position change event
-        editor.onDidChangeCursorPosition((e: monaco.editor.ICursorPositionChangedEvent) => {
-          setCursorPosition({ 
-            lineNumber: e.position.lineNumber, 
-            column: e.position.column 
+        editor.onDidChangeCursorPosition(e => {
+          setCursorPosition({
+            lineNumber: e.position.lineNumber,
+            column: e.position.column
           });
         });
+
+        // Set language based on file extension
+        setCurrentLanguage(getLanguageFromFilePath(currentFile));
       } catch (error) {
-        console.error('Error initializing Monaco editor:', error);
+        console.error('Failed to load Monaco Editor:', error);
       }
     };
     
     loadMonaco();
     
+    // Cleanup function
     return () => {
-      // Cleanup
+      // Destroy Monaco instance when component unmounts
       if (editorRef.current) {
         editorRef.current.dispose();
       }
     };
-  }, []);
-  
-  // Update editor when selected file changes
+  }, []); // Empty dependency array to run only once on mount
+
+  // Update editor when current file changes
   useEffect(() => {
     if (editorRef.current && monacoRef.current) {
+      // Get language from file extension
       const language = getLanguageFromFilePath(currentFile);
       setCurrentLanguage(language);
       
-      try {
-        // Update model
-        const oldModel = editorRef.current.getModel();
-        const newModel = monacoRef.current.editor.createModel(
-          fileContents[currentFile], 
-          language
-        );
-        
-        editorRef.current.setModel(newModel);
-        
-        if (oldModel) {
-          oldModel.dispose();
-        }
-      } catch (error) {
-        console.error('Error updating editor model:', error);
-      }
+      // Update model
+      const model = monacoRef.current.editor.createModel(
+        fileContents[currentFile], 
+        language
+      );
+      
+      editorRef.current.setModel(model);
+      
+      // Focus editor after changing the file
+      setTimeout(() => {
+        editorRef.current?.focus();
+      }, 100);
     }
   }, [currentFile, fileContents]);
   
-  // Update theme when theme changes
+  // Update editor theme when theme changes
   useEffect(() => {
     if (editorRef.current) {
-      editorRef.current.updateOptions({ 
-        theme: darkTheme ? 'vs-dark-custom' : 'vs-light-custom' 
+      editorRef.current.updateOptions({
+        theme: darkTheme ? 'vs-dark-custom' : 'vs-light-custom'
       });
     }
   }, [darkTheme]);
-  
-  // Get language based on file extension
-  const getLanguageFromFilePath = (filePath: string): string => {
-    const extension = filePath.split('.').pop()?.toLowerCase() || '';
-    
-    switch (extension) {
-      case 'html':
-        return 'html';
-      case 'css':
-        return 'css';
-      case 'js':
-        return 'javascript';
-      case 'json':
-        return 'json';
-      case 'md':
-        return 'markdown';
-      default:
-        return 'plaintext';
-    }
-  };
-  
+
   // Handle file selection
   const handleFileClick = (filePath: string): void => {
     setCurrentFile(filePath);
@@ -324,6 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   return (
     <div className="app-container">
+      {pageTitle}
       {/* Top Navigation Bar */}
       <div className="top-navbar">
         <div className="menu-section">
@@ -346,18 +339,18 @@ document.addEventListener('DOMContentLoaded', function() {
           <span>JunaGO Workspace</span>
         </div>
         <div className="workspace-actions">
-          <button className="action-button run-button" onClick={handleRun}>
+          <Button variant="primary" size="small" className="run-button" onClick={handleRun}>
             <i className="fas fa-play"></i>
             <span>Run</span>
-          </button>
-          <button className="action-button invite-button">
+          </Button>
+          <Button variant="secondary" size="small" className="invite-button">
             <i className="fas fa-user-plus"></i>
             <span>Invite</span>
-          </button>
-          <button className="action-button deploy-button">
+          </Button>
+          <Button variant="secondary" size="small" className="deploy-button">
             <i className="fas fa-rocket"></i>
             <span>Deploy</span>
-          </button>
+          </Button>
           <div className="theme-toggle">
             <input 
               type="checkbox" 
@@ -370,7 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
       </div>
-      
+
       {/* Main Content Area */}
       <div className="main-content">
         {/* Project Explorer Sidebar */}
